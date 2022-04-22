@@ -16,4 +16,8 @@ class Mahasiswa extends Model
     // {
     //     return $this->belongsTo(Akun::class, 'akun_id');
     // }
+    public function pasien()
+    {
+        return $this->hasMany(Pasien::class);
+    }
 }

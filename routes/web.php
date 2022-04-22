@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\Pasien_webController;
 use App\Http\Controllers\TipeController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login.action');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register.action');
+
+Route::post('/beranda', [Pasien_webController::class, 'add'])->name('addpasien.action');
 
 Route::get('/register', function () {
     return view('register', [

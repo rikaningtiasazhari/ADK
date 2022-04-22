@@ -18,57 +18,60 @@
                     </div>
 
                     {{-- form --}}
+
                     <div class="modal-body">
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Nama Pasien</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword">
+                        <form class="user" action="{{ route('addpasien.action') }}" method="POST">
+                            @csrf
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Nama Pasien</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputText" name="nama_pasien" required>
+                                </div>
                             </div>
-                        </div>
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderl"
+                                        value="Laki-laki" required>
+                                    <label class="form-check-label" for="genderl">Laki-Laki</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderp"
+                                        value="Perempuan" required>
+                                    <label class="form-check-label" for="genderp">Perempuan</label>
+                                </div>
 
-                        <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                    value="option2">
-                                <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                             </div>
 
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputNumber" class="col-sm-2 col-form-label">Umur</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNumber">
+                            <div class="mb-3 row">
+                                <label for="inputNumber" class="col-sm-2 col-form-label">Umur</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="inputNumber" name="umur" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">No Hp</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText">
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label">No Hp</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputText" name="no_hp" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText">
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label">Alamat</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputText" name="alamat" required>
+                                </div>
                             </div>
-                        </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a href="diagnosa">
-                            <button type="button" class="btn btn-primary">Diagnosa</button>
-                        </a>
+                        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+
+                        <button type="submit" class="btn btn-primary">Diagnosa</button>
+
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -102,9 +105,9 @@
                             <tr>
                                 <td>{{ $pasien->nama_pasien }}</td>
                                 <td>{{ $pasien->gender }}</td>
-                                <td>0822</td>
+                                <td>{{ $pasien->no_hp }}</td>
                                 <td>{{ $pasien->umur }}</td>
-                                <td>2011/04/25</td>
+                                <td>{{ $pasien->alamat }}</td>
                                 <td>
                                     <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-eye"></i>&ensp;</a>
@@ -132,7 +135,8 @@
                                                 <label for="inputText" class="col-sm-2 col-form-label  p-1">Nama
                                                     Pasien</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->nama_pasien }}">
+                                                    <input type="text" class="form-control" id="inputText"
+                                                        value="{{ $pasien->nama_pasien }}">
                                                 </div>
                                             </div>
 
@@ -140,15 +144,16 @@
                                                 <label for="inputText" class="col-sm-2 col-form-label  p-1">Jenis
                                                     Kelamin</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->gender }}">
+                                                    <input type="text" class="form-control" id="inputText"
+                                                        value="{{ $pasien->gender }}">
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="inputNumber"
-                                                    class="col-sm-2 col-form-label  p-1">Umur</label>
+                                                <label for="inputNumber" class="col-sm-2 col-form-label  p-1">Umur</label>
                                                 <div class="col-sm-10">
-                                                    <input type="number" class="form-control" id="inputNumber" value="{{ $pasien->umur }}">
+                                                    <input type="number" class="form-control" id="inputNumber"
+                                                        value="{{ $pasien->umur }}">
                                                 </div>
                                             </div>
 
@@ -156,21 +161,21 @@
                                                 <label for="inputText" class="col-sm-2 col-form-label  p-1">No
                                                     Hp</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText">
+                                                    <input type="text" class="form-control" id="inputText"
+                                                        value="{{ $pasien->no_hp }}">
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="inputText"
-                                                    class="col-sm-2 col-form-label  p-1">Alamat</label>
+                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Alamat</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText">
+                                                    <input type="text" class="form-control" id="inputText"
+                                                        value="{{ $pasien->alamat }}">
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="inputText"
-                                                    class="col-sm-2 col-form-label  p-1">Diagnosa</label>
+                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Diagnosa</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="inputText">
                                                 </div>
@@ -191,13 +196,14 @@
                             </div>
 
                             {{-- modal Hapus Pasien --}}
-                            <div class="modal fade" id="hapus{{ $pasien->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="hapus{{ $pasien->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Delete Patien</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>

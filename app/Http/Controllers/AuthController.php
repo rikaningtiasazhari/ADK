@@ -54,7 +54,7 @@ class AuthController extends Controller
         $register->password = Hash::make($request->password);
         $register->save();
         // $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        // $validatedData['password'] = Hash::make($validatedData['password']);
 
         // Akun::create($validatedData);
         $request->session()->flash('success', 'Registrasi successfull!! Please login');
