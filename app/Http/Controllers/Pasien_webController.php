@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class Pasien_webController extends Controller
 {
+    public function index()
+    {
+        return view('/mahasiswa.editpasien', [
+            "title" => "pasien",
+            "pasiens" => Pasien::all(),
+        ]);
+    }
+
     //
     public function add(Request $request)
     {
@@ -21,10 +29,6 @@ class Pasien_webController extends Controller
             'alamat' => 'required',
         ]);
         $id = Auth::user()->Mahasiswa->id;
-        // dd($id);
-        // $data = Mahasiswa::with('pasien')->where('id', $id)->get();
-        // $posts = Post::with('user')->where('user_id', Auth::user()->id)->firstOrFail();
-        // $data->Mahasiswa->id;
         $addpasien = new Pasien();
         $addpasien->mahasiswa_id = $id;
         $addpasien->nama_pasien = $request->nama_pasien;
@@ -35,7 +39,29 @@ class Pasien_webController extends Controller
         $addpasien->alamat = $request->alamat;
         $addpasien->save();
 
-        // dd($addpasien);
         return redirect('/diagnosa');
+    }
+
+    public function tampiledit($id)
+    {
+
+        // $data = Pasien::find($id);
+        // dd($data);
+
+        return view(
+            'mahasiswa.editpasien',
+            [
+                "title" => "Pasien",
+                "data" => Pasien::findOrFail($id)
+            ]
+        );
+    }
+
+    public function delete($id)
+    {
+        $pasien = Pasien::find($id);
+        $pasien->delete();
+
+        return redirect('/beranda');
     }
 }

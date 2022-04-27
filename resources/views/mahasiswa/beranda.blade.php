@@ -79,7 +79,7 @@
 
 
 
-    <h1 class="h5 mb-2 text-gray-800">{{ Auth::user()->Mahasiswa->nama }}</h1>
+    {{-- <h1 class="h5 mb-2 text-gray-800">{{ Auth::user()->Mahasiswa->nama }}</h1> --}}
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -111,7 +111,7 @@
                                 <td>
                                     <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-eye"></i>&ensp;</a>
-                                    <a href="editpasien" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
+                                    <a href="tampiledit/{{ $pasien->id }}"><i class="bi bi-pencil-square">&ensp;</i></a>
                                     <a data-target="#hapus{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-trash3-fill"></i>
                                     </a>
@@ -211,10 +211,15 @@
                                             Apakah Pasien akan dihapus ?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                            <a href="beranda" class="btn btn-primary ">
-                                                Yes
-                                            </a>
+                                            <a type="button" class="btn btn-secondary" data-dismiss="modal">No</a>
+                                            <form action="{{ route('pasien.delete', $pasien->id) }}" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="/deleteedit/{{ $pasien->id }}" class="btn btn-primary ">
+                                                    Yes
+                                                </a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

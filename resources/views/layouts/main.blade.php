@@ -12,16 +12,16 @@
     <title>{{ $title }}</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/sb-admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/sb-admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="vendor/sb-admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/vendor/sb-admin/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     {{-- bootsrap icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -50,7 +50,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="beranda">
+                <a class="nav-link" href="/beranda">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
@@ -65,8 +65,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="profil" data-toggle="" data-target=""
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="/profil" data-toggle="" data-target="" aria-expanded="true"
+                    aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Profile</span>
                 </a>
@@ -74,8 +74,8 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login" data-toggle="" data-target=""
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="login" data-toggle="" data-target="" aria-expanded="true"
+                    aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
 
                     <span>Logout</span>
@@ -123,8 +123,9 @@
 
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->Mahasiswa->nama }}</span>
-                                <img class="img-profile rounded-circle" src="vendor/sb-admin/img/undraw_profile.svg">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->Mahasiswa->nama }}</span>
+                                <img class="img-profile rounded-circle" src="/vendor/sb-admin/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -199,21 +200,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/sb-admin/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="vendor/sb-admin/js/sb-admin-2.min.js"></script>
+    <script src="/vendor/sb-admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="vendor/sb-admin/js/demo/datatables-demo.js"></script>
+    <script src="/vendor/sb-admin/js/demo/datatables-demo.js"></script>
 
 
 

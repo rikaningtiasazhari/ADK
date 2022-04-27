@@ -31,12 +31,12 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.ac
 
 Route::post('/beranda', [Pasien_webController::class, 'add'])->name('addpasien.action');
 
+Route::get('/beranda', [BerandaController::class, 'index']);
 Route::get('/register', function () {
     return view('register', [
         "title" => "register"
     ]);
 });
-Route::get('/beranda', [BerandaController::class, 'index']);
 Route::get('/diagnosa', function () {
     return view('mahasiswa.diagnosa', [
         "title" => "diagnosa"
@@ -72,11 +72,11 @@ Route::get('/edit', function () {
         "title" => "edit profil"
     ]);
 });
-Route::get('/editpasien', function () {
-    return view('mahasiswa.editpasien', [
-        "title" => "edit pasien"
-    ]);
-});
+// Route::get('/editpasien', function () {
+//     return view('mahasiswa.editpasien', [
+//         "title" => "edit pasien"
+//     ]);
+// });
 Route::get('/editdosen', function () {
     return view('dosen.editdosen', [
         "title" => "edit profil"
@@ -120,3 +120,6 @@ Route::get('/editdosenadm', function () {
 Route::get('/modal', function () {
     return view('modal');
 });
+// ----------------------------
+Route::get('tampiledit/{id}', [Pasien_webController::class, 'tampiledit'])->name('tampiledit');
+Route::delete('deleteedit/{id}', [Pasien_webController::class, 'delete'])->name('pasien.delete');
