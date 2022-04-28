@@ -44,7 +44,6 @@ class Pasien_webController extends Controller
 
     public function tampiledit($id)
     {
-
         // $data = Pasien::find($id);
         // dd($data);
 
@@ -55,6 +54,20 @@ class Pasien_webController extends Controller
                 "data" => Pasien::findOrFail($id)
             ]
         );
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = Pasien::find($id);
+        $data->nama_pasien = $request->nama_pasien;
+        $data->umur = $request->umur;
+        $data->gender = $request->gender;
+        $data->no_hp = $request->no_hp;
+        $data->alamat = $request->alamat;
+        $data->update();
+
+        // return view('/mahasiswa.beranda', compact('data'));
+        return redirect('/beranda')->with('status', "Data telah diperbarui");
     }
 
     public function delete($id)

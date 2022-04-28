@@ -2,6 +2,14 @@
 
 @section('container')
     <!-- Page Heading -->
+    @if (session()->has('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addPasienModal">Add
             Patien</button>
@@ -111,7 +119,7 @@
                                 <td>
                                     <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-eye"></i>&ensp;</a>
-                                    <a href="tampiledit/{{ $pasien->id }}"><i class="bi bi-pencil-square">&ensp;</i></a>
+                                    <a href="tampiledit/{{ $pasien->id }}"><i class="bi bi-pencil-square"></i>&ensp;</a>
                                     <a data-target="#hapus{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-trash3-fill"></i>
                                     </a>
@@ -216,9 +224,10 @@
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="/deleteedit/{{ $pasien->id }}" class="btn btn-primary ">
+                                                {{-- <a href="/deleteedit/{{ $pasien->id }}" class="btn btn-primary ">
                                                     Yes
-                                                </a>
+                                                </a> --}}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </div>
                                     </div>

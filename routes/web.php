@@ -18,9 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome', [
+//         "title" => "welcome"
+//     ]);
+// });
 Route::get('/', function () {
-    return view('welcome', [
-        "title" => "welcome"
+    return view('login', [
+        "title" => "Login"
     ]);
 });
 
@@ -122,4 +127,5 @@ Route::get('/modal', function () {
 });
 // ----------------------------
 Route::get('tampiledit/{id}', [Pasien_webController::class, 'tampiledit'])->name('tampiledit');
+Route::post('updatepasien/{id}', [Pasien_webController::class, 'update'])->name('pasien.update');
 Route::delete('deleteedit/{id}', [Pasien_webController::class, 'delete'])->name('pasien.delete');
