@@ -22,6 +22,7 @@ class PasienController extends Controller
                 'umur' => 'required',
                 'gender' => 'required',
                 'nomor_hp' => 'required|min:10',
+                'alamat' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -35,6 +36,7 @@ class PasienController extends Controller
                 $pasien->kondisi = "sakit";
                 $pasien->gender = $request->gender;
                 $pasien->nomor_hp = $request->nomor_hp;
+                $pasien->alamat = $request->alamat;
                 $pasien->save();
                 return response()->json(['status' => true, 'message' => 'Pasien Created!', 'data' => $pasien], 200);
             }
@@ -44,7 +46,39 @@ class PasienController extends Controller
     }
     public function show($id)
     {
-        $daftarpasien = Pasien::where('mahasiswa_id', $id)->get();
+        $daftarpasien = Pasien::where('mahasiswa_id', $id)->orderBy('nama_pasien', 'asc')->get();
         return response()->json(['message' => 'success', 'data' => $daftarpasien]);
+    }
+
+    public function detail($id)
+    {
+        $detailpasien = Pasien::where('id', $id)->get();
+        return response()->json(['message' => 'success', 'data' => $detailpasien]);
+    }
+    // blm dipake
+    public function update(Request $request, $id)
+    {
+        $nama_pasien = $request->nama_pasien;
+        $umur = $request->umur;
+        $gender = $request->gender;
+        $nomor_hp = $request->nomor_hp;
+        $alamat = $request->alamat;
+
+        $pasien = Pasien::find($id);
+        $pasien->nama_pasien = $nama_pasien;
+        $pasien->umur = $umur;
+        $pasien->gender = $gender;
+        $pasien->nomor_hp = $nomor_hp;
+        $pasien->alamat = $alamat;
+        $pasien->save();
+
+        return response()->json([
+            'nama_pasien' => $pasien->nama_pasien,
+            'umur' => $pasien->umur,
+            'gender' => $pasien->gender,
+            'nomor_hp' => $pasien->nomor_hp,
+            'alamat' => $pasien->alamat,
+            'result' => 'Data successfully updated!'
+        ]);
     }
 }

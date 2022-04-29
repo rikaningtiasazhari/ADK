@@ -49,7 +49,8 @@ Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
 Route::get('pasien', [PasienController::class, 'index']);
 Route::post('pasien', [PasienController::class, 'store']);
 Route::get('pasien/{id}', [PasienController::class, 'show']);
-// Route::put('/pasien/{id}', [PasienController::class, 'update']);
+Route::get('/detailpasien/{id}', [PasienController::class, 'detail']);
+Route::put('/detailpasien/{id}', [PasienController::class, 'update']);
 
 //data
 Route::get('data', [DataController::class, 'index']);

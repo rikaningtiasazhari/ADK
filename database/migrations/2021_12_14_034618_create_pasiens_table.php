@@ -19,7 +19,9 @@ class CreatePasiensTable extends Migration
             $table->string('nama_pasien');
             $table->integer('umur');
             $table->string('kondisi')->nullable();
-            $table->enum('gender', ['laki-laki', 'perempuan']);
+            $table->string('nomor_hp');
+            $table->string('gender');
+            $table->string('alamat')->nullable();
             $table->timestamps();
         });
     }

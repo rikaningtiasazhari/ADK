@@ -67,7 +67,8 @@ class MonitoringController extends Controller
      */
     public function show($id)
     {
-        $daftarmahasiswa = Monitoring::where('dosen_id', $id)->get();
+        // $daftarmahasiswa = Monitoring::where('dosen_id', $id)->get();
+        $daftarmahasiswa = Monitoring::select('mahasiswa_id', 'dosen_id')->where('dosen_id', $id)->distinct()->get();
         return response()->json(['message' => 'success', 'data' => $daftarmahasiswa]);
     }
 
