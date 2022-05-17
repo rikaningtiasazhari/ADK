@@ -32,7 +32,11 @@ class AuthController extends Controller
             $request->session()->regenerate();
             if (Auth::user()->role_id == 1) {
             } else if (Auth::user()->role_id == 2) {
-                return redirect()->intended('/beranda');
+                if (Auth::user()->Mahasiswa()->exists()) {
+                    return redirect()->intended('/beranda');
+                }else{
+                    return redirect()->intended('/biodata');
+                }
             } else if (Auth::user()->role_id == 3) {
                 return redirect()->intended('/berandaadm');
             }

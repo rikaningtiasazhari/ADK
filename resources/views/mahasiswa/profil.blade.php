@@ -37,27 +37,22 @@
                                 <tr height="30px">
                                     <td width="330"><strong>Nama Mahasiswa</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Annisa</strong></td>
+                                    <td width="175"><strong>{{ $data->nama }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>NIM</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>1817051037</strong></td>
+                                    <td width="175"><strong>{{ $data->nomor_induk }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>Jurusan</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Ilmu Komputer</strong></td>
-                                </tr>
-                                <tr height="30px">
-                                    <td width="330"><strong>Alamat</strong></td>
-                                    <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Jl. di Hatimu</strong></td>
+                                    <td width="175"><strong>{{ $data->jurusan }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>No. Handphone</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>089997878999</strong></td>
+                                    <td width="175"><strong>{{ $data->phone_number }}</strong></td>
                                 </tr>
 
                             </table>

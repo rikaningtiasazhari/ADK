@@ -4,6 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\Pasien_webController;
 use App\Http\Controllers\TipeController;
+use App\Models\Mahasiswa;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +45,24 @@ Route::get('/register', function () {
         "title" => "register"
     ]);
 });
+Route::get('/biodata', function () {
+    return view('biodata', [
+        "title" => "bidata"
+    ]);
+});
+route::post('/biodata', function (Request $request) {
+    $validatedData = $request->validate([
+        'nomor_induk' => 'required',
+        'nama' => 'required',
+        'phone_number' => 'required',
+        'jurusan' => 'required',
+    ]);
+    $validatedData['akun_id'] = Auth::user()->id;
+    $validatedData['image'] = 'default.png';
+
+    Mahasiswa::create($validatedData);
+    return redirect()->to("/beranda");
+});
 Route::get('/diagnosa', function () {
     return view('mahasiswa.diagnosa', [
         "title" => "diagnosa"
@@ -59,7 +80,8 @@ Route::get('/hasil', function () {
 });
 Route::get('/profil', function () {
     return view('mahasiswa.profil', [
-        "title" => "profil"
+        "title" => "profil",
+        "data" => Auth::user()->Mahasiswa,
     ]);
 });
 Route::get('/riwayatpasien', function () {
