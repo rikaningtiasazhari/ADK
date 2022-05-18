@@ -38,27 +38,22 @@
                                 <tr height="30px">
                                     <td width="330"><strong>Nama </strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Annisa Nurwalikadani</strong></td>
+                                    <td width="175"><strong>{{ $dosen->nama }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>NIP</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>1817051037</strong></td>
+                                    <td width="175"><strong>{{ $dosen->nomor_induk }}</strong></td>
                                 </tr>
                                 <tr height="30px">
-                                    <td width="330"><strong>Email</strong></td>
+                                    <td width="330"><strong>Jurusan</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>annisa.nurwalikadani@gmail.com</strong></td>
-                                </tr>
-                                <tr height="30px">
-                                    <td width="330"><strong>Alamat</strong></td>
-                                    <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Jl. di Hatimu</strong></td>
+                                    <td width="175"><strong>{{ $dosen->jurusan }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>No. Handphone</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>089997878999</strong></td>
+                                    <td width="175"><strong>{{ $dosen->phone_number }}</strong></td>
                                 </tr>
 
                             </table>

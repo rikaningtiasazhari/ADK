@@ -11,6 +11,16 @@
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h4 class="m-0 font-weight-bold text-primary">Edit Profile</h4>
+                @if (session()->has('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                 <!-- INI BLM TAU UPDATE PASIEN DARI MN
+        <form action=" {{ url('/updatepasien/' . $data->id) }}" method="post">
+        -->
+
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -37,35 +47,28 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Nama </label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="text" class="form-control" id="inputText" value="{{ $dosen->nama }}">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">NIP</label>
+                                <label for="inputNumber" class="col-sm-2 col-form-label p-1">NIP</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="number" class="form-control" id="inputNumber" value="{{ $dosen->nomor_induk }}">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">Email</label>
+                                <label for="inputText" class="col-sm-2 col-form-label p-1">Jurusan</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="text" class="form-control" id="inputText" value="{{ $dosen->jurusan }}">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">Alamat</label>
+                                <label for="inputNumber" class="col-sm-2 col-form-label p-1">No Hp</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
-                                </div>
-                            </div>
-
-                            <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">No Hp</label>
-                                <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="number" class="form-control" id="inputNumber" value="{{ $dosen->phone_number }}">
                                 </div>
                             </div>
 
