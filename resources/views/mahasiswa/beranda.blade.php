@@ -20,9 +20,9 @@
                     {{-- form --}}
                     <div class="modal-body">
                         <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Nama Pasien</label>
+                            <label for="inputText" class="col-sm-2 col-form-label">Nama Pasien</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword">
+                                <input type="text" class="form-control" id="inputText">
                             </div>
                         </div>
 
@@ -49,9 +49,9 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">No Hp</label>
+                            <label for="inputNumber" class="col-sm-2 col-form-label">No Hp</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText">
+                                <input type="number" class="form-control" id="inputNumber">
                             </div>
                         </div>
 
@@ -103,9 +103,9 @@
                             <tr>
                                 <td>{{ $pasien->nama_pasien }}</td>
                                 <td>{{ $pasien->gender }}</td>
-                                <td>0822</td>
+                                <td>{{ $pasien->no_hp }}</td>
                                 <td>{{ $pasien->umur }}</td>
-                                <td>2011/04/25</td>
+                                <td>{{ $pasien->alamat }}</td>
                                 <td>
                                     <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-eye"></i>&ensp;</a>
@@ -157,7 +157,7 @@
                                                 <label for="inputText" class="col-sm-2 col-form-label  p-1">No
                                                     Hp</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText">
+                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->no_hp }}">
                                                 </div>
                                             </div>
 
@@ -165,7 +165,7 @@
                                                 <label for="inputText"
                                                     class="col-sm-2 col-form-label  p-1">Alamat</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText">
+                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->alamat }}">
                                                 </div>
                                             </div>
 

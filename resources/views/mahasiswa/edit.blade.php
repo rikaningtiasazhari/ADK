@@ -9,6 +9,15 @@
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h4 class="m-0 font-weight-bold text-primary">Edit Profile</h4>
+                @if (session()->has('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <!-- INI BLM TAU UPDATE PASIEN DARI MN
+        <form action=" {{ url('/updatepasien/' . $data->id) }}" method="post">
+        -->
+
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -35,37 +44,37 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Nama </label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
-                                </div>
-                            </div>
-
-                            <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">Jenis Kelamin</label>
-                                <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
-                                </div>
-                            </div>
-
-                            <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">No Hp</label>
-                                <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="text" class="form-control" id="inputText" value="{{ $data->nama }}"
+                                        name="nama">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">NIM</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="text" class="form-control" id="inputText"
+                                        value="{{ $data->nomor_induk }}">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label p-1">Alamat</label>
+                                <label for="inputText" class="col-sm-2 col-form-label p-1">Jurusan</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText">
+                                    <input type="text" class="form-control" id="inputText" value="{{ $data->jurusan }}">
                                 </div>
                             </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label p-1">No Hp</label>
+                                <div class="col-mx-auto">
+                                    <input type="text" class="form-control" id="inputText"
+                                        value="{{ $data->phone_number }}">
+                                </div>
+                            </div>
+
+
+
+
 
                         </table>
                     </div>
