@@ -1,8 +1,6 @@
 @extends('layouts.dosen')
 
 @section('dosen')
-
-
 {{-- biodata --}}
     <span> </span>
     <!-- Area Chart -->
@@ -17,9 +15,12 @@
                     </div>
                 @endif
 
+
                  <!-- INI BLM TAU UPDATE PASIEN DARI MN
         <form action=" {{ url('/updatepasien/' . $data->id) }}" method="post">
         -->
+            @csrf
+            @method("PUT")
 
             </div>
             <!-- Card Body -->
@@ -47,34 +48,37 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Nama </label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ $dosen->nama }}">
+                                    <input type="text" class="form-control" id="inputText" value="{{ Auth::user()->dosen->nama }}"
+                                        name="nama">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label p-1">NIP</label>
                                 <div class="col-mx-auto">
-                                    <input type="number" class="form-control" id="inputNumber" value="{{ $dosen->nomor_induk }}">
+                                    <input type="number" class="form-control" id="inputNumber" value="{{ Auth::user()->dosen->nomor_induk }}"
+                                        name="nomor_induk">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Jurusan</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ $dosen->jurusan }}">
+                                    <input type="text" class="form-control" id="inputText" value="{{ Auth::user()->dosen->nomor_induk }}"
+                                        name="jurusan">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label p-1">No Hp</label>
                                 <div class="col-mx-auto">
-                                    <input type="number" class="form-control" id="inputNumber" value="{{ $dosen->phone_number }}">
+                                    <input type="number" class="form-control" id="inputNumber" value="{{ Auth::user()->dosen->phone_number }}"
+                                        name="phone_number">
                                 </div>
                             </div>
 
                         </table>
                     </div>
-
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a href="profildosen" class="btn btn-primary" type="button">Save Change</a>

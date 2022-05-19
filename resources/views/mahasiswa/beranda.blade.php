@@ -22,7 +22,7 @@
                         <div class="mb-3 row">
                             <label for="inputText" class="col-sm-2 col-form-label">Nama Pasien</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText">
+                                <input type="text" class="form-control" id="inputText" >
                             </div>
                         </div>
 
