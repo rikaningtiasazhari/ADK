@@ -14,10 +14,10 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <!-- INI BLM TAU UPDATE PASIEN DARI MN
-        <form action=" {{ url('/updatepasien/' . $data->id) }}" method="post">
-        -->
 
+        <form action=" {{ url('/updatepasien/' . Auth::user()->mahasiswa->id) }}" method="post">
+            @csrf
+            @method("PUT")
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -44,7 +44,7 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Nama </label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ $data->nama }}"
+                                    <input type="text" class="form-control" id="inputText" value="{{ Auth::user()->mahasiswa->nama }}"
                                         name="nama">
                                 </div>
                             </div>
@@ -53,14 +53,14 @@
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">NIM</label>
                                 <div class="col-mx-auto">
                                     <input type="text" class="form-control" id="inputText"
-                                        value="{{ $data->nomor_induk }}">
+                                        value="{{  Auth::user()->mahasiswa->nomor_induk }}" name="nomor_induk">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Jurusan</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ $data->jurusan }}">
+                                    <input type="text" class="form-control" id="inputText" value="{{  Auth::user()->mahasiswa->jurusan }}" name="jurusan">
                                 </div>
                             </div>
 
@@ -68,7 +68,7 @@
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">No Hp</label>
                                 <div class="col-mx-auto">
                                     <input type="text" class="form-control" id="inputText"
-                                        value="{{ $data->phone_number }}">
+                                        value="{{  Auth::user()->mahasiswa->phone_number }}" name="phone_number">
                                 </div>
                             </div>
 
@@ -81,10 +81,11 @@
 
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="profil" class="btn btn-primary" type="button">Save Change</a>
+                    <button href="profil" class="btn btn-primary" type="submit">Save Change</button>
 
                 </div>
             </div>
+        </form>
         </div>
     </div>
 

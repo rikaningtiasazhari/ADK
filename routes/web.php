@@ -95,8 +95,9 @@ Route::get('/uraian', function () {
     ]);
 });
 Route::get('/edit', function () {
+
     return view('mahasiswa.edit', [
-        "title" => "edit profil"
+        "title" => "edit profil",
     ]);
 });
 // Route::get('/editpasien', function () {
@@ -149,5 +150,5 @@ Route::get('/modal', function () {
 });
 // ----------------------------
 Route::get('tampiledit/{id}', [Pasien_webController::class, 'tampiledit'])->name('tampiledit');
-Route::post('updatepasien/{id}', [Pasien_webController::class, 'update'])->name('pasien.update');
+Route::put('updatepasien/{mahasiswa}', [Pasien_webController::class, 'update'])->name('pasien.update');
 Route::delete('deleteedit/{id}', [Pasien_webController::class, 'delete'])->name('pasien.delete');
