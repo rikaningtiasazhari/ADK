@@ -95,9 +95,16 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->nomor_induk = $request->nomor_induk;
+        $mahasiswa->phone_number = $request->phone_number;
+        $mahasiswa->jurusan = $request->jurusan;
+        $mahasiswa->update();
+
+        // return view('/mahasiswa.beranda', compact('data'));
+        return redirect('/profil')->with('status', "Data telah diperbarui");
     }
 
     /**

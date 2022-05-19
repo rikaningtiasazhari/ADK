@@ -48,7 +48,7 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Nama </label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ Auth::user()->dosen->nama }}"
+                                    <input type="text" class="form-control" id="inputText" value="{{$dosen->nama }}"
                                         name="nama">
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label p-1">NIP</label>
                                 <div class="col-mx-auto">
-                                    <input type="number" class="form-control" id="inputNumber" value="{{ Auth::user()->dosen->nomor_induk }}"
+                                    <input type="number" class="form-control" id="inputNumber" value="{{$dosen->nomor_induk }}"
                                         name="nomor_induk">
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Jurusan</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ Auth::user()->dosen->nomor_induk }}"
+                                    <input type="text" class="form-control" id="inputText" value="{{ $dosen->nomor_induk }}"
                                         name="jurusan">
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label p-1">No Hp</label>
                                 <div class="col-mx-auto">
-                                    <input type="number" class="form-control" id="inputNumber" value="{{ Auth::user()->dosen->phone_number }}"
+                                    <input type="number" class="form-control" id="inputNumber" value="{{ $dosen->phone_number }}"
                                         name="phone_number">
                                 </div>
                             </div>

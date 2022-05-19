@@ -15,7 +15,7 @@
                     </div>
                 @endif
 
-        <form action=" {{ url('/updatepasien/' . Auth::user()->mahasiswa->id) }}" method="post">
+        <form action=" {{ url('/updateprofile/' . Auth::user()->mahasiswa->id) }}" method="post">
             @csrf
             @method("PUT")
             </div>

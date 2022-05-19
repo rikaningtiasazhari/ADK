@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Pasien_webController;
 use App\Http\Controllers\TipeController;
 use App\Models\Mahasiswa;
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -100,11 +102,12 @@ Route::get('/edit', function () {
         "title" => "edit profil",
     ]);
 });
-// Route::get('/editpasien', function () {
-//     return view('mahasiswa.editpasien', [
-//         "title" => "edit pasien"
-//     ]);
-// });
+Route::get('/editpasien/{pasien}', function (Pasien $pasien) {
+    return view('mahasiswa.editpasien', [
+        "title" => "edit pasien",
+        'data' => $pasien
+    ]);
+});
 Route::get('/editdosen', function () {
     return view('dosen.editdosen', [
         "title" => "edit profil"
@@ -150,5 +153,6 @@ Route::get('/modal', function () {
 });
 // ----------------------------
 Route::get('tampiledit/{id}', [Pasien_webController::class, 'tampiledit'])->name('tampiledit');
-Route::put('updatepasien/{mahasiswa}', [Pasien_webController::class, 'update'])->name('pasien.update');
+Route::put('updatepasien/{pasien}', [Pasien_webController::class, 'update'])->name('pasien.update');
+Route::put('updateprofile/{mahasiswa}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
 Route::delete('deleteedit/{id}', [Pasien_webController::class, 'delete'])->name('pasien.delete');

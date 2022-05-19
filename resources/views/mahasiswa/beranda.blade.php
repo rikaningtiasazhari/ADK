@@ -109,7 +109,7 @@
                                 <td>
                                     <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-eye"></i>&ensp;</a>
-                                    <a href="editpasien" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
+                                    <a href="editpasien/{{ $pasien->id }}" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
                                     <a data-target="#hapus{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-trash3-fill"></i>
                                     </a>

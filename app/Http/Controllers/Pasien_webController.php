@@ -56,16 +56,17 @@ class Pasien_webController extends Controller
         );
     }
 
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, Pasien $pasien)
     {
-        $mahasiswa->nama = $request->nama;
-        $mahasiswa->nomor_induk = $request->nomor_induk;
-        $mahasiswa->phone_number = $request->phone_number;
-        $mahasiswa->jurusan = $request->jurusan;
-        $mahasiswa->update();
+        $pasien->nama_pasien = $request->nama_pasien;
+        $pasien->gender = $request->gender;
+        $pasien->umur = $request->umur;
+        $pasien->no_hp = $request->no_hp;
+        $pasien->alamat = $request->alamat;
+        $pasien->update();
 
         // return view('/mahasiswa.beranda', compact('data'));
-        return redirect('/profil')->with('status', "Data telah diperbarui");
+        return redirect('/beranda')->with('status', "Data telah diperbarui");
     }
 
     public function delete($id)
