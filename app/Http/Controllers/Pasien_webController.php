@@ -20,7 +20,6 @@ class Pasien_webController extends Controller
     //
     public function add(Request $request)
     {
-        // dd($request->all());
         $validatedData = $request->validate([
             'nama_pasien' => 'required',
             'umur' => 'required',

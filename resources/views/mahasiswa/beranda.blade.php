@@ -17,59 +17,58 @@
                         </button>
                     </div>
 
-                    {{-- form --}}
-                    <div class="modal-body">
-                        <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">Nama Pasien</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText" >
+                    <form action="/beranda" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label">Nama Pasien</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="nama_pasien" class="form-control" id="inputText" >
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                        value="Laki-Laki">
+                                    <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                                        value="Perempuan">
+                                    <label class="form-check-label" for="inlineRadio2">Perempuan</label>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputNumber" class="col-sm-2 col-form-label">Umur</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="umur" class="form-control" id="inputNumber">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputNumber" class="col-sm-2 col-form-label">No Hp</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="no_hp" class="form-control" id="inputNumber">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="inputText" class="col-sm-2 col-form-label">Alamat</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="alamat" class="form-control" id="inputText">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                    value="option2">
-                                <label class="form-check-label" for="inlineRadio2">Perempuan</label>
-                            </div>
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Diagnosa</button>
                         </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputNumber" class="col-sm-2 col-form-label">Umur</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNumber">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputNumber" class="col-sm-2 col-form-label">No Hp</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputNumber">
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <label for="inputText" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputText">
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a href="diagnosa">
-                            <button type="button" class="btn btn-primary">Diagnosa</button>
-                        </a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -192,13 +191,14 @@
                             </div>
 
                             {{-- modal Hapus Pasien --}}
-                            <div class="modal fade" id="hapus{{ $pasien->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="hapus{{ $pasien->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Delete Patien</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -206,10 +206,16 @@
                                             Apakah Pasien akan dihapus ?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                            <a href="beranda" class="btn btn-primary ">
-                                                Yes
-                                            </a>
+                                            <a type="button" class="btn btn-secondary" data-dismiss="modal">No</a>
+                                            <form action="{{ route('pasien.delete', $pasien->id) }}" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                @csrf
+                                                @method('DELETE')
+                                                {{-- <a href="/deleteedit/{{ $pasien->id }}" class="btn btn-primary ">
+                                                    Yes
+                                                </a> --}}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
