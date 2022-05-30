@@ -26,7 +26,13 @@
     {{-- bootsrap icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+    <style>
+        .select2 {
+            width:100%!important;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -216,8 +222,9 @@
     <!-- Page level custom scripts -->
     <script src="vendor/sb-admin/js/demo/datatables-demo.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
+    @yield("myscript")
 </body>
 
 </html>

@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BerandadosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\Pasien_webController;
 use App\Http\Controllers\TipeController;
 use App\Models\Mahasiswa;
+use App\Models\Monitoring;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -128,11 +131,18 @@ Route::get('/berandaadm', function () {
         "title" => "beranda"
     ]);
 });
+
 Route::get('/berandadosen', function () {
+    $id = Monitoring::whereDosenId(Auth::user()->Dosen->id)->get()->pluck('mahasiswa_id');
+    $mahasiswa = Mahasiswa::whereNotIn('id', $id)->get();
     return view('dosen.berandadosen', [
-        "title" => "beranda"
+        "title" => "beranda",
+        'mahasiswas' => $mahasiswa
     ]);
 });
+
+Route::post('/berandadosen',[BerandadosenController::class, 'store']);
+
 Route::get('/datamhs', function () {
     return view('admin.datamhs', [
         "title" => "data mahasiswa"
@@ -155,4 +165,5 @@ Route::get('/modal', function () {
 Route::get('tampiledit/{id}', [Pasien_webController::class, 'tampiledit'])->name('tampiledit');
 Route::put('updatepasien/{pasien}', [Pasien_webController::class, 'update'])->name('pasien.update');
 Route::put('updateprofile/{mahasiswa}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
+Route::put('updatedosen/{dosen}', [DosenController::class, 'update'])->name('dosen.update');
 Route::delete('deleteedit/{id}', [Pasien_webController::class, 'delete'])->name('pasien.delete');

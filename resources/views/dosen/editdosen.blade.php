@@ -16,13 +16,11 @@
                 @endif
 
 
-                 <!-- INI BLM TAU UPDATE PASIEN DARI MN
-        <form action=" {{ url('/updatepasien/' . $data->id) }}" method="post">
-        -->
+        <form action=" {{ url('/updatedosen/' . Auth::user()->Dosen->id) }}" method="post">
             @csrf
             @method("PUT")
 
-            </div>
+        </div>
             <!-- Card Body -->
             <div class="card-body">
                 <div class="row">
@@ -48,7 +46,7 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Nama </label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{$dosen->nama }}"
+                                    <input type="text" class="form-control" id="inputText" value="{{Auth::user()->Dosen->nama }}"
                                         name="nama">
                                 </div>
                             </div>
@@ -56,7 +54,7 @@
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label p-1">NIP</label>
                                 <div class="col-mx-auto">
-                                    <input type="number" class="form-control" id="inputNumber" value="{{$dosen->nomor_induk }}"
+                                    <input type="number" class="form-control" id="inputNumber" value="{{Auth::user()->Dosen->nomor_induk }}"
                                         name="nomor_induk">
                                 </div>
                             </div>
@@ -64,7 +62,7 @@
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label p-1">Jurusan</label>
                                 <div class="col-mx-auto">
-                                    <input type="text" class="form-control" id="inputText" value="{{ $dosen->nomor_induk }}"
+                                    <input type="text" class="form-control" id="inputText" value="{{ Auth::user()->Dosen->jurusan }}"
                                         name="jurusan">
                                 </div>
                             </div>
@@ -72,7 +70,7 @@
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label p-1">No Hp</label>
                                 <div class="col-mx-auto">
-                                    <input type="number" class="form-control" id="inputNumber" value="{{ $dosen->phone_number }}"
+                                    <input type="number" class="form-control" id="inputNumber" value="{{ Auth::user()->Dosen->phone_number }}"
                                         name="phone_number">
                                 </div>
                             </div>
@@ -81,11 +79,12 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="profildosen" class="btn btn-primary" type="button">Save Change</a>
-
+                    <button type="submit" class="btn btn-primary">Save Change</button>
                 </div>
             </div>
         </div>
+
+        <form>
     </div>
 
     <div class="card mx-auto">

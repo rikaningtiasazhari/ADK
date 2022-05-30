@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Http\Requests\StoreDosenRequest;
-use App\Http\Requests\UpdateDosenRequest;
+use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
@@ -68,9 +68,16 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDosenRequest $request, Dosen $dosen)
+    public function update(Request $request, Dosen $dosen)
     {
-        //
+        $dosen->nama = $request->nama;
+        $dosen->nomor_induk = $request->nomor_induk;
+        $dosen->phone_number = $request->phone_number;
+        $dosen->jurusan = $request->jurusan;
+        $dosen->update();
+
+        // return view('/mahasiswa.beranda', compact('data'));
+        return redirect('/profildosen')->with('status', "Data telah diperbarui");
     }
 
     /**

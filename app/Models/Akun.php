@@ -20,4 +20,9 @@ class Akun extends Authenticatable
     {
         return $this->hasOne(Mahasiswa::class);
     }
+
+    public function Dosen()
+    {
+        return $this->hasOne(Dosen::class);
+    }
 }

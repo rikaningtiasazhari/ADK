@@ -38,22 +38,22 @@
                                 <tr height="30px">
                                     <td width="330"><strong>Nama </strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>{{ $dosen->nama }}</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->nama }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>NIP</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>{{ $dosen->nomor_induk }}</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->nomor_induk }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>Jurusan</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>{{ $dosen->jurusan }}</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->jurusan }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>No. Handphone</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>{{ $dosen->phone_number }}</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->phone_number }}</strong></td>
                                 </tr>
 
                             </table>
