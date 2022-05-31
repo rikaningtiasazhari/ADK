@@ -9,13 +9,18 @@ class Dosen extends Model
 {
     use HasFactory;
 
-    // protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     // protected $with = ['dosen'];
 
     public function dosen()
     {
         return $this->belongsTo(Dosen::class, 'id');
+    }
+
+    public function Akun()
+    {
+        return $this->belongsTo(Akun::class);
     }
 
     // relation to mahasiswa model

@@ -3,8 +3,7 @@
 @section('container')
     <!-- Page Heading -->
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addPasienModal">Add
-            Patien</button>
+        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addPasienModal">Add Patien</button>
         {{-- modal --}}
         <div class="modal fade" id="addPasienModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">

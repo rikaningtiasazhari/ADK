@@ -5,7 +5,7 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addPasienModal">Add Student</button>
         {{-- modal --}}
-        <div class="modal fade" id="addPasienModal" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="addPasienModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -33,6 +33,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
 
 
 
@@ -146,10 +148,14 @@
                             Apakah Pasien akan dihapus ?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <a href="berandadosen" class="btn btn-danger ">
-                                Yes
-                            </a>
+                            <form action="berandadosen/{{ $mahasiswa->id }}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                <button type="submit" class="btn btn-danger ">
+                                    Yes
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

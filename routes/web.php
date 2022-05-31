@@ -7,12 +7,14 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\Pasien_webController;
 use App\Http\Controllers\TipeController;
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\Monitoring;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -128,7 +130,10 @@ Route::get('/detailmhs', function () {
 });
 Route::get('/berandaadm', function () {
     return view('admin.berandaadm', [
-        "title" => "beranda"
+        "title" => "beranda",
+        'total_pasien' => Pasien::count(),
+        'total_mahasiswa' => Mahasiswa::count(),
+        'total_dosen' => Dosen::count()
     ]);
 });
 
@@ -142,17 +147,49 @@ Route::get('/berandadosen', function () {
 });
 
 Route::post('/berandadosen',[BerandadosenController::class, 'store']);
+Route::delete('/berandadosen/{mahasiswa}', [BerandadosenController::class, 'destroy']);
 
 Route::get('/datamhs', function () {
     return view('admin.datamhs', [
-        "title" => "data mahasiswa"
+        "title" => "data mahasiswa",
+        'mahasiswas' => Mahasiswa::all()
     ]);
 });
+Route::put('/datamhs/{mahasiswa}', function (Request $request, Mahasiswa $mahasiswa) {
+    $request->validate([
+        'nama' => 'required',
+        'nomor_induk' => 'required',
+        'jurusan' => 'required',
+        'phone_number' => 'required',
+        'email' => 'required|email:dns|unique:akuns,email,' . $mahasiswa->Akun->id . 'id',
+        'password' => 'nullable|min:5|confirmed',
+    ]);
+
+    $mahasiswa->nama = $request->nama;
+    $mahasiswa->nomor_induk = $request->nomor_induk;
+    $mahasiswa->phone_number = $request->phone_number;
+    $mahasiswa->jurusan = $request->jurusan;
+    $mahasiswa->update();
+
+    $mahasiswa->Akun->email = $request->email;
+    if($request->password){
+        $mahasiswa->Akun->password = Hash::make($request->password);
+    }
+    $mahasiswa->Akun->update();
+    return redirect('/datamhs')->with('status', "Data telah diubah");
+});
+Route::delete('/datamhs/{mahasiswa}', [MahasiswaController::class, 'destroy']);
+
+
 Route::get('/datadosen', function () {
     return view('admin.datadosen', [
-        "title" => "data dosen"
+        "title" => "data dosen",
+        'dosens' => Dosen::all()
     ]);
 });
+Route::post('/datadosen', [DosenController::class, 'store']);
+Route::delete('/datadosen/{dosen}', [DosenController::class, 'destroy']);
+
 Route::get('/editdosenadm', function () {
     return view('admin.editdosenadm', [
         "title" => "edit"

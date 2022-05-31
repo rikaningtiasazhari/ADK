@@ -29,4 +29,11 @@ class BerandadosenController extends Controller
 
         return redirect('/berandadosen')->with('status', "Data telah ditambahkan");
     }
+
+    public function destroy($mhs_id)
+    {
+        $dosen_id = Auth::user()->Dosen->id;
+        Monitoring::where('mahasiswa_id', $mhs_id)->where('dosen_id', $dosen_id)->delete();
+        return redirect('/berandadosen')->with('status', "Data telah ditambahkan");
+    }
 }

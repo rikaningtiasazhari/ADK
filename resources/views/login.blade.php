@@ -23,7 +23,7 @@
 </head>
 
 <body class="bg-gradient-primary">
-
+{{-- @dd($errors->all()) --}}
 
     <div class="container">
 
