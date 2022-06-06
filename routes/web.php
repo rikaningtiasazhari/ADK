@@ -190,11 +190,36 @@ Route::get('/datadosen', function () {
 Route::post('/datadosen', [DosenController::class, 'store']);
 Route::delete('/datadosen/{dosen}', [DosenController::class, 'destroy']);
 
-Route::get('/editdosenadm', function () {
+Route::get('/editdosenadm/{dosen}', function (Dosen $dosen) {
     return view('admin.editdosenadm', [
-        "title" => "edit"
+        "title" => "edit",
+        'dosen' => $dosen
     ]);
 });
+Route::put('/datadosen/{dosen}', function (Request $request, Dosen $dosen) {
+    $request->validate([
+        'nama' => 'required',
+        'nomor_induk' => 'required',
+        'jurusan' => 'required',
+        'phone_number' => 'required',
+        'email' => 'required|email:dns|unique:akuns,email,' . $dosen->Akun->id . 'id',
+        'password' => 'nullable|min:5|confirmed',
+    ]);
+
+    $dosen->nama = $request->nama;
+    $dosen->nomor_induk = $request->nomor_induk;
+    $dosen->phone_number = $request->phone_number;
+    $dosen->jurusan = $request->jurusan;
+    $dosen->update();
+
+    $dosen->Akun->email = $request->email;
+    if ($request->password) {
+        $dosen->Akun->password = Hash::make($request->password);
+    }
+    $dosen->Akun->update();
+    return redirect('/datadosen')->with('status', "Data telah diubah");
+});
+
 Route::get('/modal', function () {
     return view('modal');
 });

@@ -111,7 +111,7 @@
                                 <td>{{ $dosen->phone_number }}</td>
                                 <td>
 
-                                    <a href="editdosenadm" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
+                                    <a href="/editdosenadm/{{ $dosen->id }}" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
                                     <a data-target="#hapus{{ $dosen->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-trash3-fill"></i></a>
                                 </td>
