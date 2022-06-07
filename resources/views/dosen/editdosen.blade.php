@@ -16,7 +16,7 @@
                 @endif
 
 
-        <form action=" {{ url('/updatedosen/' . Auth::user()->Dosen->id) }}" method="post">
+        <form action=" {{ url('/updatedosen/' . Auth::user()->Dosen->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method("PUT")
 
@@ -28,7 +28,7 @@
                         <div class="col-xl-4 col-lg-7">
                             <div class="container">
                                 <div class="card" style="width: 10rem;">
-                                    <img src="{{ asset('/images/ica.png') }} " class="card-img-top" alt="...">
+                                    <img src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}" class="card-img-top" alt="...">
 
                                 </div>
                             </div>
@@ -72,6 +72,12 @@
                                 <div class="col-mx-auto">
                                     <input type="number" class="form-control" id="inputNumber" value="{{ Auth::user()->Dosen->phone_number }}"
                                         name="phone_number">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="image">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
 

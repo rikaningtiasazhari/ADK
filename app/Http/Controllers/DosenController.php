@@ -96,10 +96,16 @@ class DosenController extends Controller
      */
     public function update(Request $request, Dosen $dosen)
     {
+        $request->validate([
+            'image' => 'image|file|max:1024',
+        ]);
         $dosen->nama = $request->nama;
         $dosen->nomor_induk = $request->nomor_induk;
         $dosen->phone_number = $request->phone_number;
         $dosen->jurusan = $request->jurusan;
+        if ($request->file('image')) {
+            $dosen->image = $request->file('image')->store('profile');
+        }
         $dosen->update();
 
         // return view('/mahasiswa.beranda', compact('data'));

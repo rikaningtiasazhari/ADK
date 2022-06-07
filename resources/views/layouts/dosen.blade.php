@@ -131,7 +131,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->Dosen->nama }}</span>
-                                <img class="img-profile rounded-circle" src="/vendor/sb-admin/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -206,23 +206,29 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/sb-admin/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="vendor/sb-admin/js/sb-admin-2.min.js"></script>
+    <script src="/vendor/sb-admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="vendor/sb-admin/js/demo/datatables-demo.js"></script>
+    <script src="/vendor/sb-admin/js/demo/datatables-demo.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
     @yield("myscript")
 </body>
