@@ -6,14 +6,12 @@ use App\Http\Controllers\BerandadosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\Pasien_webController;
-use App\Http\Controllers\TipeController;
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\Monitoring;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -229,3 +227,6 @@ Route::put('updatepasien/{pasien}', [Pasien_webController::class, 'update'])->na
 Route::put('updateprofile/{mahasiswa}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
 Route::put('updatedosen/{dosen}', [DosenController::class, 'update'])->name('dosen.update');
 Route::delete('deleteedit/{id}', [Pasien_webController::class, 'delete'])->name('pasien.delete');
+
+Route::get('sign-in-google', [AuthController::class, 'google'])->name('login.google');
+Route::get('oauth/google/callback', [AuthController::class, 'googleCallback'])->name('google.callback');

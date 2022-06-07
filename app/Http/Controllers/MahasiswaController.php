@@ -97,10 +97,16 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
+        $request->validate([
+            'image' => 'image|file|max:1024',
+        ]);
         $mahasiswa->nama = $request->nama;
         $mahasiswa->nomor_induk = $request->nomor_induk;
         $mahasiswa->phone_number = $request->phone_number;
         $mahasiswa->jurusan = $request->jurusan;
+        if ($request->file('image')) {
+            $mahasiswa->image = $request->file('image')->store('profile');
+        }
         $mahasiswa->update();
 
         // return view('/mahasiswa.beranda', compact('data'));

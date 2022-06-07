@@ -15,7 +15,7 @@
                     </div>
                 @endif
 
-        <form action=" {{ url('/updateprofile/' . Auth::user()->mahasiswa->id) }}" method="post">
+        <form action=" {{ url('/updateprofile/' . Auth::user()->mahasiswa->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method("PUT")
             </div>
@@ -71,11 +71,12 @@
                                         value="{{  Auth::user()->mahasiswa->phone_number }}" name="phone_number">
                                 </div>
                             </div>
-
-
-
-
-
+                            <div class="mb-3 row">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="image">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
                         </table>
                     </div>
 
@@ -93,3 +94,4 @@
 
     </div>
 @endsection
+

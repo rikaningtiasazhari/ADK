@@ -216,7 +216,12 @@
     <!-- Page level custom scripts -->
     <script src="/vendor/sb-admin/js/demo/datatables-demo.js"></script>
 
-
+    <script>
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
 </body>
 
