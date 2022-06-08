@@ -181,7 +181,7 @@
 
                                         <div class="modal-footer">
                                             <!-- /.container-fluid -->
-                                            <a href="diagnosa" class="btn btn-primary ">
+                                            <a href="/diagnosa/{{ $pasien->id }}" class="btn btn-primary ">
                                                 Diagnosa
                                             </a>
                                         </div>

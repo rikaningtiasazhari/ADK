@@ -6,10 +6,17 @@ use App\Http\Controllers\BerandadosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\Pasien_webController;
+use App\Models\Data;
+use App\Models\Diagnosa;
 use App\Models\Dosen;
+use App\Models\Kategori_uraian;
 use App\Models\Mahasiswa;
 use App\Models\Monitoring;
 use App\Models\Pasien;
+use App\Models\Riwayat_data;
+use App\Models\Riwayat_uraian;
+use App\Models\RiwayatDiagnosa;
+use App\Models\Tipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -61,26 +68,44 @@ route::post('/biodata', function (Request $request) {
         'nama' => 'required',
         'phone_number' => 'required',
         'jurusan' => 'required',
+        'password' => 'required|min:5|confirmed',
     ]);
     $validatedData['akun_id'] = Auth::user()->id;
     $validatedData['image'] = 'default.png';
 
+    Auth::user()->password = Hash::make($request->password);
+    Auth::user()->update();
     Mahasiswa::create($validatedData);
     return redirect()->to("/beranda");
 });
-Route::get('/diagnosa', function () {
+
+Route::get('/diagnosa/{pasien_id}', function (Request $request, $pasien_id) {
+    $request->session()->put('pasien_id', $pasien_id);
+    $tipes = Tipe::all();
     return view('mahasiswa.diagnosa', [
-        "title" => "diagnosa"
+        "title" => "diagnosa",
+        "tipes" => $tipes
     ]);
 });
-Route::get('/gejala', function () {
+
+Route::get('/gejala/{id}', function ($tipe_id) {
+    $datas = Data::whereTipeId($tipe_id)->get();
     return view('mahasiswa.gejala', [
-        "title" => "gejala"
+        "title" => "gejala",
+        "datas" => $datas,
+        "tipe_id" => $tipe_id
     ]);
 });
-Route::get('/hasil', function () {
+
+Route::post('/gejala/{tipe_id}', function (Request $request, $tipe_id) {
+    $request->session()->put('gejala', $request->gejala);
+    return redirect()->to('/hasil/' . $tipe_id);
+});
+Route::get('/hasil/{tipe_id}', function ($tipe_id) {
+    $diagnosas = Diagnosa::whereTipeId($tipe_id)->get();
     return view('mahasiswa.hasil', [
-        "title" => "hasil diagnosa"
+        "title" => "hasil diagnosa",
+        "diagnosas" => $diagnosas
     ]);
 });
 Route::get('/profil', function () {
@@ -94,11 +119,41 @@ Route::get('/riwayatpasien', function () {
         "title" => "riwayat pasien"
     ]);
 });
-Route::get('/uraian', function () {
+Route::get('/uraian/{intervensi_id}', function (Request $request, $intervensi_id) {
+    $request->session()->put('intervensi_id', $intervensi_id);
+    $kategori = Kategori_uraian::with(['uraians' => function($query) use ($intervensi_id) {
+        return $query->where('intervensi_id', $intervensi_id);
+    }])->get();
     return view('mahasiswa.uraian', [
-        "title" => "uraian"
+        "title" => "uraian",
+        "kategori" => $kategori
     ]);
 });
+Route::post('/uraian', function (Request $request) {
+    $pasien_id = $request->session()->get('pasien_id');
+    $intervensi_id = $request->session()->get('intervensi_id');
+    $riwayat_diagnosa = RiwayatDiagnosa::create([
+        'pasien_id' => $pasien_id,
+        'intervensi_id' => $intervensi_id
+    ]);
+
+    $data = $request->session()->get('gejala');
+    foreach($data as $data_id) {
+        Riwayat_data::create([
+            'data_id' => $data_id,
+            'riwayat_diagnosa_id' => $riwayat_diagnosa->id
+        ]);
+    }
+    foreach($request->uraian as $uraian) {
+        Riwayat_uraian::create([
+            'uraian_id' => $uraian,
+            'riwayat_diagnosa_id' => $riwayat_diagnosa->id,
+            'penjelasan_uraian' => $request->penjelasan_uraian
+        ]);
+    }
+    return redirect()->to('/beranda');
+});
+
 Route::get('/edit', function () {
 
     return view('mahasiswa.edit', [

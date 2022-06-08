@@ -84,6 +84,24 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <input type="password"
+                                        class="form-control form-control-user @error('password') is-invalid @enderror"
+                                        name="password" id="password" placeholder="Password" required
+                                        value="{{ old('password') }}">
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="password"
+                                        class="form-control form-control-user @error('password_confirmation') is-invalid @enderror"
+                                        name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required
+                                        value="{{ old('password_confirmation') }}">
+                                    @error('password_confirmation')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                                 {{-- <div class="form-group">
                                     <input type="password" class="form-control form-control-user" name="password1"
                                         id="password1" placeholder="Repeat Password">
