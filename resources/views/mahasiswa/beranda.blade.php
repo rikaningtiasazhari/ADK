@@ -127,55 +127,56 @@
                                         </div>
                                         <div class="modal-body">
                                             {{-- form --}}
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Nama
-                                                    Pasien</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->nama_pasien }}">
-                                                </div>
+                                           <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Bersihkan Jalan Napas
+                                                </button>
+                                            </h2>
                                             </div>
 
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Jenis
-                                                    Kelamin</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->gender }}">
-                                                </div>
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
                                             </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputNumber"
-                                                    class="col-sm-2 col-form-label  p-1">Umur</label>
-                                                <div class="col-sm-10">
-                                                    <input type="number" class="form-control" id="inputNumber" value="{{ $pasien->umur }}">
-                                                </div>
                                             </div>
+                                        </div>
 
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">No
-                                                    Hp</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->no_hp }}">
-                                                </div>
+
+
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Latihan Batuk (A)
+                                                </button>
+                                            </h2>
                                             </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputText"
-                                                    class="col-sm-2 col-form-label  p-1">Alamat</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText" value="{{ $pasien->alamat }}">
-                                                </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                Gejala-Gejala yang ada, hasilnya apa, intervensinya, plus uraiannya
                                             </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputText"
-                                                    class="col-sm-2 col-form-label  p-1">Diagnosa</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText">
-                                                </div>
                                             </div>
+                                        </div>
 
 
+
+                                        <div class="card">
+                                            <div class="card-header" id="headingThree">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Gangguan Pola Tidur
+                                                </button>
+                                            </h2>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                                            </div>
+                                            </div>
+                                        </div>
                                         </div>
 
 
