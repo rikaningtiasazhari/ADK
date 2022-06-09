@@ -44,9 +44,11 @@
         <ul class="navbar-nav bg-gradient-custom sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <div class="img-profile">
+
+                    <img class="rounded-circle" width="40px" src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}">
+
                 </div>
                 <div class="sidebar-brand-text mx-3">{{ Auth::user()->Dosen->nama }}</div>
             </a>
