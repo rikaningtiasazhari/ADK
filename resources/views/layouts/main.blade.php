@@ -38,12 +38,16 @@
         <ul class="navbar-nav bg-gradient-custom sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
+
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="img-profile">
+
+                    <img class="rounded-circle" width="40px" src="{{ asset('/storage/' . Auth::user()->Mahasiswa->image) }}">
+
                 </div>
                 <div class="sidebar-brand-text mx-3">{{ Auth::user()->Mahasiswa->nama }}</div>
             </a>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">

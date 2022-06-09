@@ -17,6 +17,7 @@ use App\Models\Riwayat_data;
 use App\Models\Riwayat_uraian;
 use App\Models\RiwayatDiagnosa;
 use App\Models\Tipe;
+use App\Models\Uraian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -151,6 +152,10 @@ Route::post('/uraian', function (Request $request) {
             'penjelasan_uraian' => $request->penjelasan_uraian
         ]);
     }
+    $request->session()->forget('pasien_id');
+    $request->session()->forget('intervensi_id');
+    $request->session()->forget('gejala');
+
     return redirect()->to('/beranda');
 });
 
@@ -187,6 +192,34 @@ Route::get('/berandaadm', function () {
         'total_pasien' => Pasien::count(),
         'total_mahasiswa' => Mahasiswa::count(),
         'total_dosen' => Dosen::count()
+    ]);
+});
+
+Route::get('/detailpasien/{pasien_id}', function ($pasien_id) {
+    $riwayats = RiwayatDiagnosa::wherePasienId($pasien_id)->with(['intervensi.diagnosa'])->get();
+    return view('mahasiswa.detailpasien', [
+        "title" => "Riwayat Pasien",
+        "pasien_id" => $pasien_id,
+        "riwayats" => $riwayats
+    ]);
+});
+
+Route::get('/detaildiagnosa/{riwayat_id}/{tipe_id}', function ($riwayat_id, $tipe_id) {
+    $tipe = Tipe::find($tipe_id);
+    $datas = Riwayat_data::where('riwayat_diagnosa_id', $riwayat_id)->get();
+    $riwayat = RiwayatDiagnosa::where('id', $riwayat_id)->with(['intervensi.diagnosa'])->first();
+    $uraians = Riwayat_uraian::where('riwayat_diagnosa_id', $riwayat_id)->get()->pluck('uraian_id');
+    $kategori_uraians = Kategori_uraian::with(['Uraians' => function($query) use ($uraians) {
+        return $query->whereIn('id', $uraians);
+    }])->get();
+    $penjelasan = Riwayat_uraian::where('riwayat_diagnosa_id', $riwayat_id)->first();
+    return view('mahasiswa.detaildiagnosa', [
+        "title" => "Detail Diagnosa",
+        "tipe" => $tipe,
+        "datas" => $datas,
+        "riwayat" => $riwayat,
+        "kategoris" => $kategori_uraians,
+        "penjelasan" => $penjelasan
     ]);
 });
 

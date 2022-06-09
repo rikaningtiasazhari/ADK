@@ -74,8 +74,9 @@
     </div>
 
 
-
+    <!--
     <h1 class="h5 mb-2 text-gray-800">{{ Auth::user()->Mahasiswa->nama }}</h1>
+    -->
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -105,15 +106,14 @@
                                 <td>{{ $pasien->umur }}</td>
                                 <td>{{ $pasien->alamat }}</td>
                                 <td>
-                                    <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
-                                            class="bi bi-eye"></i>&ensp;</a>
+                                    <a href="detailpasien/{{ $pasien->id }}" type="button"><i class="bi bi-eye"></i>&ensp;</a>
                                     <a href="editpasien/{{ $pasien->id }}" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
                                     <a data-target="#hapus{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-trash3-fill"></i>
                                     </a>
                                 </td>
                             </tr>
-                            {{-- modal Lihat Riwayat --}}
+                          {{-- modal Lihat Riwayat
                             <div class="modal fade" id="lihatriwayat{{ $pasien->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -125,70 +125,9 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            {{-- form --}}
-                                           <div class="accordion" id="accordionExample">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Bersihkan Jalan Napas
-                                                </button>
-                                            </h2>
-                                            </div>
 
-                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
-                                            </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="card">
-                                            <div class="card-header" id="headingTwo">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Latihan Batuk (A)
-                                                </button>
-                                            </h2>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                Gejala-Gejala yang ada, hasilnya apa, intervensinya, plus uraiannya
-                                            </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="card">
-                                            <div class="card-header" id="headingThree">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Gangguan Pola Tidur
-                                                </button>
-                                            </h2>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                                And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-
-
-                                        <div class="modal-footer">
-                                            <!-- /.container-fluid -->
-                                            <a href="/diagnosa/{{ $pasien->id }}" class="btn btn-primary ">
-                                                Diagnosa
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- modal Hapus Pasien --}}
                             <div class="modal fade" id="hapus{{ $pasien->id }}" tabindex="-1" role="dialog"
