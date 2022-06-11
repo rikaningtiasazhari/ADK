@@ -41,10 +41,10 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                 <div class="profile-user-img img-responsive img-profile">
 
-                    <img class="rounded-circle" width="38px" src="{{ asset('/storage/' . Auth::user()->Mahasiswa->image) }}">
+                    <img class="rounded-circle" width="38" height="38" src="{{ asset('/storage/' . Auth::user()->Mahasiswa->image) }}">
 
                 </div>
-                <div class="sidebar-text mr-2 d-none d-lg-inline small ">{{ Auth::user()->Mahasiswa->nama }}</div>
+                <div class="sidebar-text mr-2 d-none d-lg-inline small ml-2 ">{{ Auth::user()->Mahasiswa->nama }} </div>
             </a>
 
 
@@ -124,7 +124,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
 
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle text-capitalize" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->Mahasiswa->nama }}</span>

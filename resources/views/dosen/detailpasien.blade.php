@@ -21,13 +21,12 @@
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                            data-target="#collapseOne{{ $riwayat->id }}" aria-expanded="true" aria-controls="collapseOne">
+                        <a class="btn btn-link btn-block text-left" href="/detaildiagnosa/{{ $riwayat->id }}/{{ $riwayat->intervensi->diagnosa->tipe->id }}">
                             {{ $riwayat->intervensi->diagnosa->tipe->nama }}
-                        </button>
+                        </a>
                     </h2>
                 </div>
-
+<!--
                 <div id="collapseOne{{ $riwayat->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <a href="/detaildiagnosa/{{ $riwayat->id }}/{{ $riwayat->intervensi->diagnosa->tipe->id }}">
                     <div class="card-body">
@@ -38,6 +37,7 @@
                     </div>
                     </a>
                 </div>
+            -->
             </div>
             @endforeach
         </div>

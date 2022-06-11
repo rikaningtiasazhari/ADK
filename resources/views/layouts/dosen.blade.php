@@ -47,10 +47,10 @@
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
                 <div class="img-profile">
 
-                    <img class="rounded-circle" width="40px" src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}">
+                    <img class="rounded-circle" width="38" height="38"src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}">
 
                 </div>
-                <div class="sidebar-brand-text mx-3">{{ Auth::user()->Dosen->nama }}</div>
+                <div class="sidebar-brand-text mx-3 ml-2">{{ Auth::user()->Dosen->nama }}</div>
             </a>
 
             <!-- Divider -->
@@ -82,7 +82,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login" data-toggle="" data-target="" aria-expanded="true"
+                <a class="nav-link collapsed" href="/login" data-toggle="" data-target="" aria-expanded="true"
                     aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
 
