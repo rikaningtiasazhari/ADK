@@ -2,7 +2,7 @@
 
 @section('container')
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Uraian Intervensi</h1>
+    <h4 class="mb-4 text-gray-800"><strong>Uraian Intervensi</strong></h4>
     <a class="btn btn-primary btn-lg disabled mx-auto d-block" role="button" aria-disabled="true">Pemantauan Respirasi</a>
 
     <form action="/uraian" method="POST">
