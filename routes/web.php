@@ -181,9 +181,11 @@ Route::get('/profildosen', function () {
         "title" => "profil dosen"
     ]);
 });
-Route::get('/detailmhs', function () {
+Route::get('/detailmhs/{mahasiswa}', function (Mahasiswa $mahasiswa) {
     return view('dosen.detailmhs', [
-        "title" => "detail mahasiswa"
+        "title" => "detail mahasiswa",
+        "mahasiswa" => $mahasiswa,
+        "pasiens" => Pasien::whereMahasiswaId($mahasiswa->id)->get(),
     ]);
 });
 Route::get('/berandaadm', function () {
@@ -197,7 +199,8 @@ Route::get('/berandaadm', function () {
 
 Route::get('/detailpasien/{pasien_id}', function ($pasien_id) {
     $riwayats = RiwayatDiagnosa::wherePasienId($pasien_id)->with(['intervensi.diagnosa'])->get();
-    return view('mahasiswa.detailpasien', [
+    $view = Auth::user()->role_id == 1 ? 'dosen.detailpasien' : 'mahasiswa.detailpasien';
+    return view($view, [
         "title" => "Riwayat Pasien",
         "pasien_id" => $pasien_id,
         "riwayats" => $riwayats
@@ -213,7 +216,8 @@ Route::get('/detaildiagnosa/{riwayat_id}/{tipe_id}', function ($riwayat_id, $tip
         return $query->whereIn('id', $uraians);
     }])->get();
     $penjelasan = Riwayat_uraian::where('riwayat_diagnosa_id', $riwayat_id)->first();
-    return view('mahasiswa.detaildiagnosa', [
+    $view = Auth::user()->role_id == 1 ? 'dosen.detaildiagnosa' : 'mahasiswa.detaildiagnosa';
+    return view($view, [
         "title" => "Detail Diagnosa",
         "tipe" => $tipe,
         "datas" => $datas,

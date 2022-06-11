@@ -12,7 +12,7 @@ class BerandaController extends Controller
     {
         return view('mahasiswa.beranda', [
             "title" => "beranda",
-            "pasiens" => Pasien::all(),
+            "pasiens" => Pasien::whereMahasiswaId(Auth::user()->Mahasiswa->id)->get(),
         ]);
     }
 }

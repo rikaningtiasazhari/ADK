@@ -1,6 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.dosen')
 
-@section('container')
+@section('dosen')
 
 
 <div class="container-fluid">
@@ -12,29 +12,24 @@
                     <h4 class="m-0 font-weight-bold text-primary">Detail Gejala</h4>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body ">
-                    <div class="ibox float-e-margins">
-
-                    <h6 style="font-variant: JIS78"><strong>Tipe Diagnosa</strong></h6>
-                    <div class="ibox-content table-responsive" style="display:block">
+                <div class="card-body">
+                    <h5>Tipe Diagnosa</h5>
                     <p>{{ $tipe->nama }}</p>
-                        </div>
-                    </div>
 
-                    <h6 class="m-0 font-bold text-dark">Data Gejala</h6>
+                    <h5>Data Gejala</h5>
                     <ul>
                         @foreach ($datas as $data)
                         <li>{{ $data->data->nama }}</li>
                         @endforeach
                     </ul>
 
-                    <h6 class="m-0 font-bold text-dark">Hasil diagnosa</h6>
+                    <h5>Hasil diagnosa</h5>
                     <p>{{ $riwayat->intervensi->diagnosa->nama }}</p>
 
-                    <h6 class="m-0 font-bold text-dark">Hasil intervensi</h6>
+                    <h5>Hasil intervensi</h5>
                     <p>{{ $riwayat->intervensi->nama }}</p>
 
-                    <h6 class="m-0 font-bold text-dark">Uraian intervensi</h6>
+                    <h5>Uraian intervensi</h5>
                     @foreach ($kategoris as $kategori)
                     <p>{{ $kategori->kategori_uraian }}</p>
                     <ul>
@@ -44,7 +39,7 @@
                     </ul>
                     @endforeach
 
-                    <h6 class="m-0 font-bold text-dark">Penjelasan Uraian:</h6>
+                    <h5>Penjelasan Uraian:</h5>
                     <p>{{ $penjelasan->penjelasan_uraian }}</p>
                 </div>
         </div>

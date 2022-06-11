@@ -26,7 +26,7 @@
                         <div class="col-xl-4 col-lg-7">
                             <div class="container">
                                 <div class="card" style="width: 10rem;">
-                                    <img src="{{ asset('/images/ica.png') }} " class="card-img-top" alt="...">
+                                    <img src="{{ asset('/storage/' . Auth::user()->Mahasiswa->image) }} " class="card-img-top" alt="...">
 
                                 </div>
                             </div>

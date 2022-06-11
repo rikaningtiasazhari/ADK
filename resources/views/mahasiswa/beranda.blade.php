@@ -3,7 +3,7 @@
 @section('container')
     <!-- Page Heading -->
     <div class="d-grid gap-2 d-md-flex justify-content-md-end m-2">
-        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addPasienModal">Add Patien</button>
+        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#addPasienModal">Add Patien</button>
         {{-- modal --}}
         <div class="modal fade" id="addPasienModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -81,7 +81,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pasien</h6>
+            <h6 class="m-0 font-weight-bold text-info">Data Pasien</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">

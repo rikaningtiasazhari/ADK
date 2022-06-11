@@ -26,7 +26,6 @@
     {{-- bootsrap icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-
 </head>
 
 <body id="page-top">
@@ -40,12 +39,12 @@
             <!-- Sidebar - Brand -->
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                <div class="img-profile">
+                <div class="profile-user-img img-responsive img-profile">
 
-                    <img class="rounded-circle" width="40px" src="{{ asset('/storage/' . Auth::user()->Mahasiswa->image) }}">
+                    <img class="rounded-circle" width="38px" src="{{ asset('/storage/' . Auth::user()->Mahasiswa->image) }}">
 
                 </div>
-                <div class="sidebar-brand-text mx-3">{{ Auth::user()->Mahasiswa->nama }}</div>
+                <div class="sidebar-text mr-2 d-none d-lg-inline small ">{{ Auth::user()->Mahasiswa->nama }}</div>
             </a>
 
 
@@ -166,7 +165,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Rika Ningtias Azhari 2022</span>
                     </div>
                 </div>
             </footer>

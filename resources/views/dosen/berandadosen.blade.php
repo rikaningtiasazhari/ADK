@@ -123,7 +123,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
-                                                    <a href="detailmhs" class="btn btn-primary" type="button">Lihat
+                                                    <a href="/detailmhs/{{ $mahasiswa->id }}" class="btn btn-primary" type="button">Lihat
                                                         Pasien</a>
                                                 </div>
                                             </div>

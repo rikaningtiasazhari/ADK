@@ -1,6 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.dosen')
 
-@section('container')
+@section('dosen')
 
 
 <div class="container-fluid">
@@ -41,8 +41,6 @@
             </div>
             @endforeach
         </div>
- <div class="d-grid gap-2 d-md-flex justify-content-md-end m-2">
-        <a href="/diagnosa/{{ $pasien_id }}" class="btn btn-success" type="button">Diagnosa</a>
- </div></div>></div></div></div>
+</div></div></div></div>
 
 @endsection
