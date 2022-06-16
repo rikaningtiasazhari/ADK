@@ -98,7 +98,7 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </select>
-
+                                </div>
 
                                 <div class="form-group">
                                     <input type="password"
