@@ -2,7 +2,7 @@
 
 @section('admin')
     <!-- Page Heading -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end m-3">
         <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addPasienModal">Add Dosen</button>
         {{-- modal --}}
         <div class="modal fade" id="addPasienModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -81,8 +81,6 @@
 
 
 
-    <h1 class="h5 mb-2 text-gray-800">Admin</h1>
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -132,7 +130,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <div class="modal-body">
-                                                Apakah Pasien akan dihapus ?
+                                                Apakah Akun akan dihapus ?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

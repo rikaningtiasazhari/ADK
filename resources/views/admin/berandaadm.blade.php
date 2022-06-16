@@ -3,8 +3,7 @@
 @section('admin')
 
 
-                    <!-- Page Heading -->
-                    <h1 class="h5 mb-2 text-gray-800">Admin</h1>
+
 
                     <!-- Content Row -->
                     <div class="row">

@@ -165,7 +165,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Rika Ningtias Azhari 2022</span>
+                        <span>Copyright &copy; Sistem Pakar Pembelajaran Keperawatan 2022</span>
                     </div>
                 </div>
             </footer>
@@ -193,7 +193,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Apakah anda yakin ingin Logout ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login">Logout</a>

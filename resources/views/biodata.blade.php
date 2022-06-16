@@ -84,6 +84,22 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+
+                                <div class="form-group">
+                                <label> Dosen Pembimbing </label>
+                                <select class="form-control maximum-search-length @error('') is-invalid @enderror "
+                                name="dosen_id" id="dosen_id" placeholder="Dosen Pembimbing" required
+                                        value="{{ old('jurusan') }}">>
+                                    <option value="" selected disabled>Pilih dosen</option>
+                                    @foreach ($dosens as $dosen)
+                                        <option value="{{ $dosen->id }}">{{ $dosen->nama }}</option>
+                                    @endforeach
+                                    @error('jurusan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </select>
+
+
                                 <div class="form-group">
                                     <input type="password"
                                         class="form-control form-control-user @error('password') is-invalid @enderror"

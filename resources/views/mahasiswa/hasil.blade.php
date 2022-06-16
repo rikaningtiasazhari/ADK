@@ -1,25 +1,26 @@
 @extends('layouts.main')
 
 @section('container')
-    <!-- Page Heading -->
-    <!-- Dropdown -->
-    <div class="row">
-        <div class="col-lg-12">
-            <!-- dashboard-->
-            <div class="wrapper wrapper-content animated fadeIn">
-            <div class="row">
-                <div class="center col-lg-4">
-                    <div class="text-center alert alert-info">
-                        <ul>
-                            <li>
-                             <h5 class="ml-2 m-1 text-gray-800">
-                                 <strong>Hasil Diagnosa</strong></h5>
 
-                            </li>
-                        </ul>
-                    </div>
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
+
+  <!-- Content Row -->
+
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="text-capitalize mx-auto">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h4 class="m-0 font-weight-bold text-primary">Hasil Diagnosa</h4>
+                </div>
+<!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="col-xl-4 col-lg-7">
+                                <div class="container">
+                                    <div class="card" style="width: 25rem;">
     @foreach ($diagnosas as $diagnosa)
     <div class="dropdown mb-4">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -35,8 +36,10 @@
     @endforeach
     </div>
                 </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

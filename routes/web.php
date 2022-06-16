@@ -59,8 +59,10 @@ Route::get('/register', function () {
     ]);
 });
 Route::get('/biodata', function () {
+    $dosen = Dosen::all();
     return view('biodata', [
-        "title" => "bidata"
+        "title" => "bidata",
+        "dosens" => $dosen
     ]);
 });
 route::post('/biodata', function (Request $request) {
@@ -76,7 +78,13 @@ route::post('/biodata', function (Request $request) {
 
     Auth::user()->password = Hash::make($request->password);
     Auth::user()->update();
-    Mahasiswa::create($validatedData);
+
+    $mhs = Mahasiswa::create($validatedData);
+
+    Monitoring::create([
+        'mahasiswa_id' => $mhs->id,
+        'dosen_id' => $request->dosen_id
+    ]);
     return redirect()->to("/beranda");
 });
 
@@ -102,11 +110,26 @@ Route::post('/gejala/{tipe_id}', function (Request $request, $tipe_id) {
     $request->session()->put('gejala', $request->gejala);
     return redirect()->to('/hasil/' . $tipe_id);
 });
-Route::get('/hasil/{tipe_id}', function ($tipe_id) {
-    $diagnosas = Diagnosa::whereTipeId($tipe_id)->get();
+Route::get('/hasil/{tipe_id}', function (Request $request, $tipe_id) {
+    // $diagnosas = Diagnosa::whereTipeId($tipe_id)->get();
+    $gejala = $request->session()->get('gejala');
+    $datas = Data::whereIn('id', $gejala)->groupBy('diagnosa_id')->selectRaw('sum(skor) as skor, diagnosa_id')->get();
+    $diagnosas = array();
+    foreach($datas as $data) {
+        if ($data->skor >= 5) {
+            array_push($diagnosas, $data->diagnosa_id);
+        }
+    }
+
+    if(count($diagnosas) > 0) {
+        $diagnosa = Diagnosa::whereTipeId($tipe_id)->whereIn('id', $diagnosas)->get();
+    }else{
+        return redirect()->to('/gejala/' . $tipe_id);
+    }
+
     return view('mahasiswa.hasil', [
         "title" => "hasil diagnosa",
-        "diagnosas" => $diagnosas
+        "diagnosas" => $diagnosa
     ]);
 });
 Route::get('/profil', function () {

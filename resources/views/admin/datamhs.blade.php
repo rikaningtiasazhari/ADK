@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('admin')
-    <h1 class="h5 mb-2 text-gray-800">Admin</h1>
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -135,7 +135,7 @@
                                         @csrf
                                         @method("DELETE")
                                         <div class="modal-body">
-                                            Apakah Pasien akan dihapus ?
+                                            Apakah Akun akan dihapus ?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

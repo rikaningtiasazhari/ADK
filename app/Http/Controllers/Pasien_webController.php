@@ -38,7 +38,7 @@ class Pasien_webController extends Controller
         $addpasien->alamat = $request->alamat;
         $addpasien->save();
 
-        return redirect('/beranda');
+        return redirect('/diagnosa/' . $addpasien->id);
     }
 
     public function tampiledit($id)
