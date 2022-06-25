@@ -13,7 +13,7 @@
                 <div class="card-body ">
                     <div class="ibox float-e-margins">
 
-                        <h6 style="font-variant: JIS78"><strong>Tipe Diagnosa</strong></h6>
+                        <h6 style="font-variant: JIS78"><strong>Sub Kategori</strong></h6>
                         <div class="ibox-content table-responsive" style="display:block">
                             <p>{{ $tipe->nama }}</p>
                         </div>

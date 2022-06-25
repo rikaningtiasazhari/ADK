@@ -5,6 +5,7 @@
 
 <div class="container-fluid">
     <!-- Dropdown -->
+
     <div class="row">
         <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -12,35 +13,60 @@
                     <h4 class="m-0 font-weight-bold text-primary">Detail Gejala</h4>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
-                    <h5>Tipe Diagnosa</h5>
-                    <p>{{ $tipe->nama }}</p>
+               <div class="card-body ">
+                    <div class="ibox float-e-margins">
 
-                    <h5>Data Gejala</h5>
-                    <ul>
-                        @foreach ($datas as $data)
-                        <li>{{ $data->data->nama }}</li>
-                        @endforeach
-                    </ul>
+                        <h6 style="font-variant: JIS78"><strong>Sub Kategori</strong></h6>
+                        <div class="ibox-content table-responsive" style="display:block">
+                            <p>{{ $tipe->nama }}</p>
+                        </div>
+                    </div>
 
-                    <h5>Hasil diagnosa</h5>
-                    <p>{{ $riwayat->intervensi->diagnosa->nama }}</p>
+                    <div class="ibox float-e-margins">
+                        <h6 style="font-variant: JIS78"><strong>Data Gejala</strong></h6>
+                        <div class="ibox-content table-responsive" style="display:block">
+                            <ul>
+                                @foreach ($datas as $data)
+                                    <li>{{ $data->data->nama }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
 
-                    <h5>Hasil intervensi</h5>
-                    <p>{{ $riwayat->intervensi->nama }}</p>
+                    <div class="ibox float-e-margins">
+                        <h6 style="font-variant: JIS78"><strong>Hasil diagnosa</strong></h6>
+                        <div class="ibox-content table-responsive" style="display:block">
+                            <p>{{ $riwayat->intervensi->diagnosa->nama }}</p>
+                        </div>
+                    </div>
 
-                    <h5>Uraian intervensi</h5>
-                    @foreach ($kategoris as $kategori)
-                    <p>{{ $kategori->kategori_uraian }}</p>
-                    <ul>
-                        @foreach ($kategori->Uraians as $uraian)
-                        <li>{{ $uraian->nama }}</li>
-                        @endforeach
-                    </ul>
-                    @endforeach
+                    <div class="ibox float-e-margins">
+                        <h6 style="font-variant: JIS78"><strong>Hasil intervensi</strong></h6>
+                        <div class="ibox-content table-responsive" style="display:block">
+                            <p>{{ $riwayat->intervensi->nama }}</p>
+                        </div>
+                    </div>
 
-                    <h5>Penjelasan Uraian:</h5>
-                    <p>{{ $penjelasan->penjelasan_uraian }}</p>
+                    <div class="ibox float-e-margins">
+                        <h6 style="font-variant: JIS78"><strong>Uraian intervensi</strong></h6>
+                        <div class="ibox-content table-responsive" style="display:block">
+                            @foreach ($kategoris as $kategori)
+                                <p>{{ $kategori->kategori_uraian }}</p>
+                                <ul>
+                                    @foreach ($kategori->Uraians as $uraian)
+                                        <li>{{ $uraian->nama }}</li>
+                                    @endforeach
+                                </ul>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="ibox-content table-responsive" style="display:block">
+                        <h6 style="font-variant: JIS78"><strong>Penjelasan Uraian: </strong></h6>
+                        <div class="ibox-content table-responsive" style="display:block">
+                            <p>{{ $penjelasan->penjelasan_uraian }}</p>
+                        </div>
+                    </div>
                 </div>
         </div>
     </div>

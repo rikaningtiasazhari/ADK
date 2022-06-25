@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label> Dosen Pembimbing </label>
+                               <!-- <label> Dosen Pembimbing </label> -->
                                 <select class="form-control maximum-search-length @error('') is-invalid @enderror "
                                 name="dosen_id" id="dosen_id" placeholder="Dosen Pembimbing" required
                                         value="{{ old('jurusan') }}">>

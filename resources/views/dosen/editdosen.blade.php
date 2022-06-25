@@ -16,7 +16,7 @@
                 @endif
 
 
-        <form action=" {{ url('/updatedosen/' . Auth::user()->Dosen->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('/updatedosen/' . Auth::user()->Dosen->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method("PUT")
 
@@ -29,7 +29,6 @@
                             <div class="container">
                                 <div class="card" style="width: 10rem;">
                                     <img src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}" class="card-img-top" alt="...">
-
                                 </div>
                             </div>
                         </div>
