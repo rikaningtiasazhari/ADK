@@ -77,7 +77,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login" data-toggle="" data-target="" aria-expanded="true"
+                <a class="nav-link collapsed" href="/login" data-toggle="" data-target="" aria-expanded="true"
                     aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
 
@@ -133,12 +133,12 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profil">
+                                <a class="dropdown-item" href="/profil">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/login" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -196,28 +196,28 @@
                 <div class="modal-body">Apakah anda yakin ingin Logout ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login">Logout</a>
+                    <a class="btn btn-primary" href="/login">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/sb-admin/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('/vendor/sb-admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('/vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/vendor/sb-admin/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('/vendor/sb-admin/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="/vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('/vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/vendor/sb-admin/js/demo/datatables-demo.js"></script>
+    <script src="{{ asset('/vendor/sb-admin/js/demo/datatables-demo.js') }}"></script>
 
     <script>
         $(".custom-file-input").on("change", function() {

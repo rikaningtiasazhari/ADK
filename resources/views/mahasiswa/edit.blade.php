@@ -82,7 +82,7 @@
 
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button href="profil" class="btn btn-primary" type="submit">Save Change</button>
+                    <button href="/profil" class="btn btn-primary" type="submit">Save Change</button>
 
                 </div>
             </div>

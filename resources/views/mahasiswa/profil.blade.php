@@ -60,7 +60,7 @@
 
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="edit" class="btn btn-warning" type="button">Edit</a>
+                        <a href="/edit" class="btn btn-warning" type="button">Edit</a>
 
                                 </div>
                             </div>
