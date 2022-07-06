@@ -77,7 +77,7 @@
                                     Register Account
                                 </button>
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <a href="{{ route('login.google') }}" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
 
