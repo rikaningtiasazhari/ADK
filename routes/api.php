@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\IntervensiController;
 use App\Http\Controllers\KategoriUraianController;
 use App\Http\Controllers\MahasiswaController;
@@ -36,6 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('akun', [AkunController::class, 'index']);
 Route::post('akun', [AkunController::class, 'store']);
 Route::post('login', [AkunController::class, 'show']); //login
+Route::post('signingoogle', [AkunController::class, 'signInGoogle']); //signInGoogle
 Route::put('/akun/{id}', [AkunController::class, 'update']);
 Route::delete('/akun/{id}', [AkunController::class, 'destroy']);
 
@@ -44,6 +46,10 @@ Route::get('mahasiswa', [MahasiswaController::class, 'index']);
 Route::post('mahasiswa', [MahasiswaController::class, 'store']);
 Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
 Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+
+//dosen
+Route::get('dosen', [DosenController::class, 'index']);
+Route::put('/dosen/{id}', [DosenController::class, 'update']);
 
 //pasien
 Route::get('pasien', [PasienController::class, 'index']);

@@ -56,7 +56,7 @@ class AkunController extends Controller
                 $akun->role_id = $request->role_id;
                 $akun->password = Hash::make($request->password, ['rounds' => 12]);
                 $akun->save();
-                return response()->json(['status' => true, 'message' => 'Profile Created!', 'data' => $akun], 200);
+                return response()->json(['status' => true, 'message' => 'Berhasil Membuat Akun!', 'data' => $akun], 200);
             }
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => $e->getMessage(), 'data' => []], 500);
@@ -172,5 +172,37 @@ class AkunController extends Controller
         $akun->delete();
 
         return 'data successfully deleted!';
+    }
+
+    public function signInGoogle(Request $request)
+    {
+        $row = Akun::firstWhere('email', $request->email);
+        if (!$row) {
+            $data = [
+                'status' => false,
+                'message' => 'Email belum terdaftar!',
+            ];
+            return response()->json($data, 401);
+        } else {
+
+            $mahasiswa = Mahasiswa::firstWhere('akun_id', $row->id);
+            $dosen = Dosen::firstWhere('akun_id', $row->id);
+            if ($mahasiswa == null) {
+                $akun = $dosen;
+            } else {
+                $akun = $mahasiswa;
+            }
+            $data = [
+                'status' => true,
+                'message' => 'Login Berhasil!',
+                'data' => [
+                    "id" => $row->id,
+                    "email" => $row->email,
+                    "role_id" => $row->role,
+                    "biodata" => $akun,
+                ],
+            ];
+            return response()->json($data, 200);
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dosen;
 use App\Http\Requests\StoreDosenRequest;
 use App\Http\Requests\UpdateDosenRequest;
+use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
@@ -15,7 +16,8 @@ class DosenController extends Controller
      */
     public function index()
     {
-        //
+        $dosen = Dosen::all();
+        return response()->json(['message' => 'success', 'data' => $dosen]);
     }
 
     /**
@@ -68,9 +70,30 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDosenRequest $request, Dosen $dosen)
+
+    public function update(Request $request, $akun_id)
     {
-        //
+        try {
+
+            $nama = $request->nama;
+            $phone_number = $request->phone_number;
+            $jurusan = $request->jurusan;
+
+            $dosen = Dosen::find($akun_id);
+            $dosen->nama = $nama;
+            $dosen->phone_number = $phone_number;
+            $dosen->jurusan = $jurusan;
+            $dosen->save();
+
+            return response()->json([
+                'nama' => $dosen->nama,
+                'phone_number' => $dosen->phone_number,
+                'jurusan' => $dosen->jurusan,
+                'result' => 'Data successfully updated!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => false, 'message' => $e->getMessage(), 'data' => []], 500);
+        }
     }
 
     /**

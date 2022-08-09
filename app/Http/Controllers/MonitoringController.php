@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Monitoring;
 use App\Http\Requests\UpdateMonitoringRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use mysqli;
 
 class MonitoringController extends Controller
 {
@@ -51,8 +53,14 @@ class MonitoringController extends Controller
                 $monitoring = new Monitoring();
                 $monitoring->mahasiswa_id = $request->mahasiswa_id;
                 $monitoring->dosen_id = $request->dosen_id;
-                $monitoring->save();
-                return response()->json(['status' => true, 'message' => 'Profile Created!', 'data' => $monitoring], 200);
+                $ceknik = DB::table('monitorings')->select('*')->where('mahasiswa_id', $monitoring->mahasiswa_id)->where('dosen_id', $monitoring->dosen_id)->get();
+                // dd(count($ceknik));
+                if (count($ceknik) == 0) {
+                    $monitoring->save();
+                    return response()->json(['status' => true, 'message' => 'Success Menambahkan', 'data' => $monitoring], 200);
+                } else if (count($ceknik) != 0) {
+                    return response()->json(['status' => true, 'message' => 'Mahasiswa sudah ada', 'data' => $ceknik], 200);
+                }
             }
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => $e->getMessage(), 'data' => []], 500);

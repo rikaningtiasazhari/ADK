@@ -95,9 +95,24 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, $akun_id)
     {
-        //
+        $nama = $request->nama;
+        $phone_number = $request->phone_number;
+        $jurusan = $request->jurusan;
+
+        $mahasiswa = Mahasiswa::find($akun_id);
+        $mahasiswa->nama = $nama;
+        $mahasiswa->phone_number = $phone_number;
+        $mahasiswa->jurusan = $jurusan;
+        $mahasiswa->save();
+
+        return response()->json([
+            'nama' => $mahasiswa->nama,
+            'phone_number' => $mahasiswa->phone_number,
+            'jurusan' => $mahasiswa->jurusan,
+            'result' => 'Data successfully updated!'
+        ]);
     }
 
     /**
