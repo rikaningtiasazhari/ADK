@@ -51,7 +51,7 @@
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label">No Hp</label>
                                 <div class="col-sm-10">
-                                    <input type="number" name="no_hp" class="form-control" id="inputNumber">
+                                    <input type="number" name="nomor_hp" class="form-control" id="inputNumber">
                                 </div>
                             </div>
 
@@ -102,7 +102,7 @@
                             <tr>
                                 <td>{{ $pasien->nama_pasien }}</td>
                                 <td>{{ $pasien->gender }}</td>
-                                <td>{{ $pasien->no_hp }}</td>
+                                <td>{{ $pasien->nomor_hp }}</td>
                                 <td>{{ $pasien->umur }}</td>
                                 <td>{{ $pasien->alamat }}</td>
                                 <td>

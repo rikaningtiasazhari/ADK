@@ -24,7 +24,7 @@ class Pasien_webController extends Controller
             'nama_pasien' => 'required',
             'umur' => 'required',
             'gender' => 'required',
-            'no_hp' => 'required',
+            'nomor_hp' => 'required',
             'alamat' => 'required',
         ]);
         $id = Auth::user()->Mahasiswa->id;
@@ -34,7 +34,7 @@ class Pasien_webController extends Controller
         $addpasien->umur = $request->umur;
         $addpasien->kondisi = 'sakit';
         $addpasien->gender = $request->gender;
-        $addpasien->no_hp = $request->no_hp;
+        $addpasien->nomor_hp = $request->nomor_hp;
         $addpasien->alamat = $request->alamat;
         $addpasien->save();
 
@@ -60,7 +60,7 @@ class Pasien_webController extends Controller
         $pasien->nama_pasien = $request->nama_pasien;
         $pasien->gender = $request->gender;
         $pasien->umur = $request->umur;
-        $pasien->no_hp = $request->no_hp;
+        $pasien->nomor_hp = $request->nomor_hp;
         $pasien->alamat = $request->alamat;
         $pasien->update();
 

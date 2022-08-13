@@ -35,7 +35,7 @@ class AuthController extends Controller
             } else if (Auth::user()->role_id == 2) {
                 if (Auth::user()->Mahasiswa()->exists()) {
                     return redirect()->intended('/beranda');
-                }else{
+                } else {
                     return redirect()->intended('/biodata');
                 }
             } else if (Auth::user()->role_id == 3) {

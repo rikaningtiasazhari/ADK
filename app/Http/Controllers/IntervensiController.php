@@ -13,6 +13,10 @@ class IntervensiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexx()
+    {
+        return Intervensi::all();
+    }
     public function index()
     {
         //

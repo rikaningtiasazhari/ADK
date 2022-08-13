@@ -44,12 +44,12 @@ Route::delete('/akun/{id}', [AkunController::class, 'destroy']);
 //mahasiswa
 Route::get('mahasiswa', [MahasiswaController::class, 'index']);
 Route::post('mahasiswa', [MahasiswaController::class, 'store']);
-Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
+Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'edit']);
 Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
 
 //dosen
 Route::get('dosen', [DosenController::class, 'index']);
-Route::put('/dosen/{id}', [DosenController::class, 'update']);
+Route::put('/dosen/{id}', [DosenController::class, 'edit']);
 
 //pasien
 Route::get('pasien', [PasienController::class, 'index']);
@@ -71,7 +71,7 @@ Route::put('/diagnosa/{id}', [DiagnosaController::class, 'update']);
 Route::delete('/diagnosa/{id}', [DiagnosaController::class, 'destroy']);
 
 //intervensi
-Route::get('intervensi', [IntervensiController::class, 'index']);
+Route::get('intervensi', [IntervensiController::class, 'indexx']);
 Route::get('intervensi/{id}', [IntervensiController::class, 'show']);
 Route::post('intervensi', [IntervensiController::class, 'store']);
 Route::put('/intervensi/{id}', [IntervensiController::class, 'update']);

@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ $pasien->nama_pasien }}</td>
                                 <td>{{ $pasien->gender }}</td>
-                                <td>{{ $pasien->no_hp }}</td>
+                                <td>{{ $pasien->nomor_hp }}</td>
                                 <td>{{ $pasien->umur }}</td>
                                 <td>{{ $pasien->alamat }}</td>
                                 <td>

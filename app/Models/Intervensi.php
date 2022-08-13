@@ -9,7 +9,7 @@ class Intervensi extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    // protected $with = ['diagnosa'];
+    protected $with = ['diagnosa'];
 
     public function diagnosa()
     {

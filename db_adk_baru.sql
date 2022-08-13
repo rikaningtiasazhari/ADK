@@ -548,7 +548,7 @@ CREATE TABLE `pasiens` (
   `umur` int(11) NOT NULL,
   `kondisi` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_hp` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomor_hp` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -558,7 +558,7 @@ CREATE TABLE `pasiens` (
 -- Dumping data for table `pasiens`
 --
 
-INSERT INTO `pasiens` (`id`, `mahasiswa_id`, `nama_pasien`, `umur`, `kondisi`, `gender`, `no_hp`, `alamat`, `created_at`, `updated_at`) VALUES
+INSERT INTO `pasiens` (`id`, `mahasiswa_id`, `nama_pasien`, `umur`, `kondisi`, `gender`, `nomor_hp`, `alamat`, `created_at`, `updated_at`) VALUES
 (6, 1, 'abie perdana', 35, 'sakit', 'Laki-laki', '089612345678', 'gedong tataan', '2022-04-27 23:14:53', '2022-06-19 09:45:47'),
 (7, 1, 'rika ningtias', 22, 'sakit', 'Perempuan', '089632607878', 'xxx', '2022-05-16 23:08:01', '2022-05-16 23:08:01'),
 (9, 2, 'azhari', 58, 'sakit', 'Laki-Laki', '081312345678', 'bataranila', '2022-05-24 22:14:56', '2022-05-24 22:14:56'),

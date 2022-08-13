@@ -9,7 +9,7 @@ class Diagnosa extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['tipe', 'intervensis'];
+    protected $with = ['tipe'];
 
     public function tipe()
     {
