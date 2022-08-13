@@ -1,33 +1,46 @@
 @extends('layouts.main')
 
 @section('container')
-    <!-- Page Heading -->
-    <h1 class="h5 mb-4 text-gray-800">Hasil Diagnosa</h1>
-    <!-- Dropdown -->
+
+
+  <!-- Content Row -->
+
     <div class="row">
 
+        <!-- Area Chart -->
+        <div class="text-capitalize mx-auto">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h4 class="m-0 font-weight-bold text-primary">Hasil Diagnosa</h4>
+                </div>
+<!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="col-xl-4 col-lg-7">
+                                <div class="container">
+                                    <div class="card" style="width: 25rem;">
+    @foreach ($diagnosas as $diagnosa)
     <div class="dropdown mb-4">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            Bersihan Jalan Napas Tidak efektif
+            {{ $diagnosa->nama }}
         </button>
         <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="uraian">Latihan Batuk Efektif (A)</a>
-            <a class="dropdown-item" href="uraian">Manajemen Jalan Napas (B)</a>
-            <a class="dropdown-item" href="uraian">Pemantauan Respirasi</a>
+            @foreach ($diagnosa->intervensis as $intervensi)
+            <a class="dropdown-item" href="/uraian/{{ $intervensi->id }}">{{ $intervensi->nama }}</a>
+            @endforeach
         </div>
     </div>
-
- <div class="dropdown mb-4">
-        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Pola Napas Tidak Efektif
-        </button>
-        <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="uraian">Manajemen Jalan Napas</a>
-            <a class="dropdown-item" href="uraian">Pemantauan Respirasi</a>
-        </div>
+    @endforeach
     </div>
-
+                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

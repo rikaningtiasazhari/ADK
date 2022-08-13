@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
-use App\Http\Requests\StoreDosenRequest;
-use App\Http\Requests\UpdateDosenRequest;
+use App\Models\Akun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DosenController extends Controller
 {
@@ -36,9 +36,33 @@ class DosenController extends Controller
      * @param  \App\Http\Requests\StoreDosenRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDosenRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'nomor_induk' => 'required',
+            'jurusan' => 'required',
+            'phone_number' => 'required',
+            'email' => 'required|email:dns|unique:akuns',
+            'password' => 'required|min:5|confirmed',
+        ]);
+
+        $akun = Akun::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => 1
+        ]);
+
+        Dosen::create([
+            'nama' => $request->nama,
+            'nomor_induk' => $request->nomor_induk,
+            'jurusan' => $request->jurusan,
+            'phone_number' => $request->phone_number,
+            'akun_id' => $akun->id,
+            'image' => 'default.png'
+        ]);
+
+        return redirect('/datadosen')->with('status', "Data telah ditambahkan");
     }
 
     /**
@@ -58,10 +82,10 @@ class DosenController extends Controller
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dosen $dosen)
-    {
-        //
-    }
+    // public function edit(Dosen $dosen)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -71,7 +95,7 @@ class DosenController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $akun_id)
+    public function edit(Request $request, $akun_id)
     {
         try {
 
@@ -95,6 +119,23 @@ class DosenController extends Controller
             return response()->json(['status' => false, 'message' => $e->getMessage(), 'data' => []], 500);
         }
     }
+    public function update(Request $request, Dosen $dosen)
+    {
+        $request->validate([
+            'image' => 'image|file|max:1024',
+        ]);
+        $dosen->nama = $request->nama;
+        $dosen->nomor_induk = $request->nomor_induk;
+        $dosen->phone_number = $request->phone_number;
+        $dosen->jurusan = $request->jurusan;
+        if ($request->file('image')) {
+            $dosen->image = $request->file('image')->store('profile');
+        }
+        $dosen->update();
+
+        // return view('/mahasiswa.beranda', compact('data'));
+        return redirect('/profildosen')->with('status', "Data telah diperbarui");
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -104,6 +145,8 @@ class DosenController extends Controller
      */
     public function destroy(Dosen $dosen)
     {
-        //
+        $dosen->Akun->delete();
+        $dosen->delete();
+        return redirect('/datadosen')->with('status', "Data telah dihapus");
     }
 }

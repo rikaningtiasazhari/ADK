@@ -10,7 +10,7 @@
     @endif
     <form action="{{ url('/updatepasien/' . $data->id) }}" method="post">
         @csrf
-        {{-- @method('PUT') --}}
+        @method('PUT')
         <div class="mb-3 row">
             <label for="inputText" class="col-sm-2 col-form-label  p-1">Nama
                 Pasien</label>

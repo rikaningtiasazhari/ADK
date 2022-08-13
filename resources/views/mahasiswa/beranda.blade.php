@@ -2,17 +2,8 @@
 
 @section('container')
     <!-- Page Heading -->
-    @if (session()->has('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addPasienModal">Add
-            Patien</button>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end m-2">
+        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#addPasienModal">Add Patien</button>
         {{-- modal --}}
         <div class="modal fade" id="addPasienModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -25,28 +16,27 @@
                         </button>
                     </div>
 
-                    {{-- form --}}
-
-                    <div class="modal-body">
-                        <form class="user" action="{{ route('addpasien.action') }}" method="POST">
-                            @csrf
+                    <form action="/beranda" method="POST">
+                        @csrf
+                        <div class="modal-body">
                             <div class="mb-3 row">
-                                <label class="col-sm-2 col-form-label">Nama Pasien</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Nama Pasien</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputText" name="nama_pasien" required>
+                                    <input type="text" name="nama_pasien" class="form-control" id="inputText" >
                                 </div>
                             </div>
+
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="genderl"
-                                        value="Laki-laki" required>
-                                    <label class="form-check-label" for="genderl">Laki-Laki</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                        value="Laki-Laki">
+                                    <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="genderp"
-                                        value="Perempuan" required>
-                                    <label class="form-check-label" for="genderp">Perempuan</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                                        value="Perempuan">
+                                    <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                                 </div>
 
                             </div>
@@ -54,31 +44,29 @@
                             <div class="mb-3 row">
                                 <label for="inputNumber" class="col-sm-2 col-form-label">Umur</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="inputNumber" name="umur" required>
+                                    <input type="number" name="umur" class="form-control" id="inputNumber">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
-                                <label for="inputText" class="col-sm-2 col-form-label">No Hp</label>
+                                <label for="inputNumber" class="col-sm-2 col-form-label">No Hp</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputText" name="no_hp" required>
+                                    <input type="number" name="no_hp" class="form-control" id="inputNumber">
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="inputText" class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputText" name="alamat" required>
+                                    <input type="text" name="alamat" class="form-control" id="inputText">
                                 </div>
                             </div>
+                        </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-
-                        <button type="submit" class="btn btn-primary">Diagnosa</button>
-
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Diagnosa</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -86,17 +74,18 @@
     </div>
 
 
-
-    {{-- <h1 class="h5 mb-2 text-gray-800">{{ Auth::user()->Mahasiswa->nama }}</h1> --}}
+    <!--
+    <h1 class="h5 mb-2 text-gray-800">{{ Auth::user()->Mahasiswa->nama }}</h1>
+    -->
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pasien</h6>
+            <h6 class="m-0 font-weight-bold text-info">Data Pasien</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-capitalize" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Nama</th>
@@ -117,15 +106,14 @@
                                 <td>{{ $pasien->umur }}</td>
                                 <td>{{ $pasien->alamat }}</td>
                                 <td>
-                                    <a data-target="#lihatriwayat{{ $pasien->id }}" data-toggle="modal" type="button"><i
-                                            class="bi bi-eye"></i>&ensp;</a>
-                                    <a href="tampiledit/{{ $pasien->id }}"><i class="bi bi-pencil-square"></i>&ensp;</a>
+                                    <a href="/detailpasien/{{ $pasien->id }}" type="button"><i class="bi bi-eye"></i>&ensp;</a>
+                                    <a href="/editpasien/{{ $pasien->id }}" type="button"><i class="bi bi-pencil-square"></i>&ensp;</a>
                                     <a data-target="#hapus{{ $pasien->id }}" data-toggle="modal" type="button"><i
                                             class="bi bi-trash3-fill"></i>
                                     </a>
                                 </td>
                             </tr>
-                            {{-- modal Lihat Riwayat --}}
+                          {{-- modal Lihat Riwayat
                             <div class="modal fade" id="lihatriwayat{{ $pasien->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -137,71 +125,9 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            {{-- form --}}
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Nama
-                                                    Pasien</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText"
-                                                        value="{{ $pasien->nama_pasien }}">
-                                                </div>
-                                            </div>
 
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Jenis
-                                                    Kelamin</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText"
-                                                        value="{{ $pasien->gender }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputNumber" class="col-sm-2 col-form-label  p-1">Umur</label>
-                                                <div class="col-sm-10">
-                                                    <input type="number" class="form-control" id="inputNumber"
-                                                        value="{{ $pasien->umur }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">No
-                                                    Hp</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText"
-                                                        value="{{ $pasien->no_hp }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Alamat</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText"
-                                                        value="{{ $pasien->alamat }}">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3 row">
-                                                <label for="inputText" class="col-sm-2 col-form-label  p-1">Diagnosa</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputText">
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-
-                                        <div class="modal-footer">
-                                            <!-- /.container-fluid -->
-                                            <a href="diagnosa" class="btn btn-primary ">
-                                                Diagnosa
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- modal Hapus Pasien --}}
                             <div class="modal fade" id="hapus{{ $pasien->id }}" tabindex="-1" role="dialog"

@@ -83,10 +83,10 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mahasiswa $mahasiswa)
-    {
-        //
-    }
+    // public function edit(Mahasiswa $mahasiswa)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -95,7 +95,7 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $akun_id)
+    public function edit(Request $request, $akun_id)
     {
         $nama = $request->nama;
         $phone_number = $request->phone_number;
@@ -114,6 +114,23 @@ class MahasiswaController extends Controller
             'result' => 'Data successfully updated!'
         ]);
     }
+    public function update(Request $request, Mahasiswa $mahasiswa)
+    {
+        $request->validate([
+            'image' => 'image|file|max:1024',
+        ]);
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->nomor_induk = $request->nomor_induk;
+        $mahasiswa->phone_number = $request->phone_number;
+        $mahasiswa->jurusan = $request->jurusan;
+        if ($request->file('image')) {
+            $mahasiswa->image = $request->file('image')->store('profile');
+        }
+        $mahasiswa->update();
+
+        // return view('/mahasiswa.beranda', compact('data'));
+        return redirect('/profil')->with('status', "Data telah diperbarui");
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -123,6 +140,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->delete();
+        return redirect('/datamhs')->with('status', "Data telah dihapus");
     }
 }

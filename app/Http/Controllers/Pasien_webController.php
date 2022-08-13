@@ -20,7 +20,6 @@ class Pasien_webController extends Controller
     //
     public function add(Request $request)
     {
-        // dd($request->all());
         $validatedData = $request->validate([
             'nama_pasien' => 'required',
             'umur' => 'required',
@@ -39,7 +38,7 @@ class Pasien_webController extends Controller
         $addpasien->alamat = $request->alamat;
         $addpasien->save();
 
-        return redirect('/diagnosa');
+        return redirect('/diagnosa/' . $addpasien->id);
     }
 
     public function tampiledit($id)
@@ -56,15 +55,14 @@ class Pasien_webController extends Controller
         );
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Pasien $pasien)
     {
-        $data = Pasien::find($id);
-        $data->nama_pasien = $request->nama_pasien;
-        $data->umur = $request->umur;
-        $data->gender = $request->gender;
-        $data->no_hp = $request->no_hp;
-        $data->alamat = $request->alamat;
-        $data->update();
+        $pasien->nama_pasien = $request->nama_pasien;
+        $pasien->gender = $request->gender;
+        $pasien->umur = $request->umur;
+        $pasien->no_hp = $request->no_hp;
+        $pasien->alamat = $request->alamat;
+        $pasien->update();
 
         // return view('/mahasiswa.beranda', compact('data'));
         return redirect('/beranda')->with('status', "Data telah diperbarui");

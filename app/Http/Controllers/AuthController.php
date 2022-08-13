@@ -6,7 +6,7 @@ use App\Models\Akun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -31,8 +31,13 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->role_id == 1) {
+                return redirect()->intended('/berandadosen');
             } else if (Auth::user()->role_id == 2) {
-                return redirect()->intended('/beranda');
+                if (Auth::user()->Mahasiswa()->exists()) {
+                    return redirect()->intended('/beranda');
+                }else{
+                    return redirect()->intended('/biodata');
+                }
             } else if (Auth::user()->role_id == 3) {
                 return redirect()->intended('/berandaadm');
             }
@@ -60,5 +65,33 @@ class AuthController extends Controller
         $request->session()->flash('success', 'Registrasi successfull!! Please login');
 
         return redirect('/login');
+    }
+
+    public function google()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleCallback(Request $request)
+    {
+        $callback = Socialite::driver('google')->stateless()->user();
+        $data = [
+            'name' => $callback->getName(),
+            'email' => $callback->getEmail(),
+            'role_id' => 2,
+        ];
+
+        $user = Akun::whereEmail($data['email'])->first();
+        if (!$user) {
+            $user = Akun::create($data);
+            Auth::login($user, false);
+            return redirect()->intended('/biodata');
+        }
+        Auth::login($user, false);
+        if ($user->Mahasiswa()->exists()) {
+            return redirect()->intended('/beranda');
+        } else {
+            return redirect()->intended('/biodata');
+        }
     }
 }

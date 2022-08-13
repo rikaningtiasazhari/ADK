@@ -17,4 +17,15 @@ class Dosen extends Model
     {
         return $this->belongsTo(Dosen::class, 'id');
     }
+
+    public function Akun()
+    {
+        return $this->belongsTo(Akun::class);
+    }
+
+    // relation to mahasiswa model
+    public function Mahasiswas()
+    {
+        return $this->hasManyThrough(Mahasiswa::class, Monitoring::class, 'dosen_id', 'id', 'id', 'mahasiswa_id');
+    }
 }

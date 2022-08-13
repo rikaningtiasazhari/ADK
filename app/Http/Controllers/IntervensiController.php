@@ -16,7 +16,8 @@ class IntervensiController extends Controller
     public function index()
     {
         //
-        return Intervensi::all();
+        return Intervensi::with('diagnosa')->get();
+        // return Intervensi::all();
     }
 
     /**
@@ -64,7 +65,7 @@ class IntervensiController extends Controller
             'data' => $data,
         ]);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *

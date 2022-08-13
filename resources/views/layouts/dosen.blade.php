@@ -12,21 +12,27 @@
     <title>{{ $title }}</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/sb-admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/sb-admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="vendor/sb-admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{  asset('vendor/sb-admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="{{  asset('vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
     {{-- bootsrap icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+    <style>
+        .select2 {
+            width:100%!important;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -38,11 +44,13 @@
         <ul class="navbar-nav bg-gradient-custom sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <div class="img-profile">
+
+                    <img class="rounded-circle" width="38" height="38"src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}">
+
                 </div>
-                <div class="sidebar-brand-text mx-3">{{ Auth::user()->Dosen->nama }}</div>
+                <div class="sidebar-brand-text mx-3 ml-2">{{ Auth::user()->Dosen->nama }}</div>
             </a>
 
             <!-- Divider -->
@@ -50,7 +58,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="berandadosen">
+                <a class="nav-link" href="/berandadosen">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
@@ -65,7 +73,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="profildosen" data-toggle="" data-target="" aria-expanded="true"
+                <a class="nav-link collapsed" href="/profildosen" data-toggle="" data-target="" aria-expanded="true"
                     aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Profile</span>
@@ -74,7 +82,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login" data-toggle="" data-target="" aria-expanded="true"
+                <a class="nav-link collapsed" href="/login" data-toggle="" data-target="" aria-expanded="true"
                     aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
 
@@ -125,17 +133,17 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->Dosen->nama }}</span>
-                                <img class="img-profile rounded-circle" src="/vendor/sb-admin/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profildosen">
+                                <a class="dropdown-item" href="/profildosen">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/login" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -162,7 +170,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Sistem Pakar Pembelajaran Keperawatan 2022</span>
                     </div>
                 </div>
             </footer>
@@ -187,37 +195,44 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">xx</span>
+                        <span aria-hidden="true">x</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Apakah anda yakin ingin Logout ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login">Logout</a>
+                    <a class="btn btn-primary" href="/login">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/sb-admin/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('vendor/sb-admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('vendor/sb-admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="vendor/sb-admin/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('vendor/sb-admin/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('vendor/sb-admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendor/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="vendor/sb-admin/js/demo/datatables-demo.js"></script>
+    <script src="{{ asset('vendor/sb-admin/js/demo/datatables-demo.js') }}/"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
-
+    @yield("myscript")
 </body>
 
 </html>

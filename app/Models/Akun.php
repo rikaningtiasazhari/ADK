@@ -11,6 +11,8 @@ class Akun extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guarded = ['id'];
+
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -19,5 +21,10 @@ class Akun extends Authenticatable
     public function Mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class);
+    }
+
+    public function Dosen()
+    {
+        return $this->hasOne(Dosen::class);
     }
 }

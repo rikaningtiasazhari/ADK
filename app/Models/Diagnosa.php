@@ -9,15 +9,15 @@ class Diagnosa extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['tipe'];
+    protected $with = ['tipe', 'intervensis'];
 
     public function tipe()
     {
         return $this->belongsTo(Tipe::class, 'tipe_id');
     }
 
-    public function intervensi()
+    public function intervensis()
     {
-        return $this->hasMany(Intervensi::class);
+        return $this->hasMany(Intervensi::class, 'diagnosa_id', 'id');
     }
 }

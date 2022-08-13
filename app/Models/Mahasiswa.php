@@ -20,4 +20,9 @@ class Mahasiswa extends Model
     {
         return $this->hasMany(Pasien::class);
     }
+
+    public function Akun()
+    {
+        return $this->belongsTo(Akun::class);
+    }
 }

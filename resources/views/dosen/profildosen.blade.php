@@ -7,7 +7,7 @@
     <div class="row">
 
         <!-- Area Chart -->
-        <div class="mx-auto">
+        <div class="text-capitalize mx-auto">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -20,7 +20,7 @@
                             <div class="col-xl-4 col-lg-7">
                                 <div class="container">
                                     <div class="card" style="width: 10rem;">
-                                        <img src="{{ asset('/images/ica.png') }} " class="card-img-top" alt="...">
+                                        <img src="{{ asset('/storage/' . Auth::user()->Dosen->image) }}" class="card-img-top" alt="...">
 
                                     </div>
                                 </div>
@@ -38,27 +38,22 @@
                                 <tr height="30px">
                                     <td width="330"><strong>Nama </strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Annisa Nurwalikadani</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->nama }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>NIP</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>1817051037</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->nomor_induk }}</strong></td>
                                 </tr>
                                 <tr height="30px">
-                                    <td width="330"><strong>Email</strong></td>
+                                    <td width="330"><strong>Jurusan</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>annisa.nurwalikadani@gmail.com</strong></td>
-                                </tr>
-                                <tr height="30px">
-                                    <td width="330"><strong>Alamat</strong></td>
-                                    <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>Jl. di Hatimu</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->jurusan }}</strong></td>
                                 </tr>
                                 <tr height="30px">
                                     <td width="330"><strong>No. Handphone</strong></td>
                                     <td width="10"><strong>:</strong></td>
-                                    <td width="175"><strong>089997878999</strong></td>
+                                    <td width="175"><strong>{{ Auth::user()->Dosen->phone_number }}</strong></td>
                                 </tr>
 
                             </table>
