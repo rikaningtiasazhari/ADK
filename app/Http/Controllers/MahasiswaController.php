@@ -57,7 +57,7 @@ class MahasiswaController extends Controller
                 $mahasiswa->nama = $request->nama;
                 $mahasiswa->phone_number = $request->phone_number;
                 $mahasiswa->jurusan = $request->jurusan;
-                $mahasiswa->image = "images/default.png";
+                $mahasiswa->image = "public/default.png";
                 $mahasiswa->save();
                 return response()->json(['status' => true, 'message' => 'Profile Created!', 'data' => $mahasiswa], 200);
             }
